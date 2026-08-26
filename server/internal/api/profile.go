@@ -128,8 +128,9 @@ func (s *Server) itemFriendpt(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
 		return
 	}
+	// ResponseItemFriendpt: friend_pt, total_friend_pt
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
-		"friend_point": pl.FriendPoint, "cost": 100})
+		"friend_pt": pl.FriendPoint, "total_friend_pt": pl.FriendPoint, "cost": 100})
 }
 
 // itemLivestage — 演出道具列表

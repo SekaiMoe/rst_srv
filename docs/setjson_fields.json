@@ -1,0 +1,143 @@
+{
+ "CardEquipmentCollection": {
+  "rva": "0x1fc9d7c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<CardEquipmentModel>"
+ },
+ "GachaConsumptionItemCollection": {
+  "rva": "0x1fcb6ec",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<GachaConsumptionItemModel>"
+ },
+ "PlayerCardCollection": {
+  "rva": "0x1fd04d4",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "CustomReactiveCollection<PlayerCardModel>"
+ },
+ "UnitCollection": {
+  "rva": "0x1fd4c7c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "CustomReactiveCollection<UnitModel>"
+ },
+ "UserModelApiManager": {
+  "rva": "0x1fd924c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "BaseModelApiManager<UserModel>"
+ },
+ "CharacterCollectionApiManager.<>c__DisplayClass3_0": {
+  "rva": "0x201b50c",
+  "sig": "JsonData data, bool isUpdate",
+  "fields": [
+   "character_id"
+  ],
+  "parent": ""
+ },
+ "EditModeSearchCollection": {
+  "rva": "0x1c97084",
+  "sig": "JsonData data",
+  "fields": [
+   "url",
+   "music_id",
+   "kind"
+  ],
+  "parent": "CustomReactiveCollection<EditModeSearchModel>"
+ },
+ "EditModeItemCollection": {
+  "rva": "0x1c9f29c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<EditModeItemModel>"
+ },
+ "Event01RankingCollection": {
+  "rva": "0x1ca7630",
+  "sig": "JsonData data",
+  "fields": [
+   "top",
+   "player"
+  ],
+  "parent": "CustomReactiveCollection<Event01RankingModel>"
+ },
+ "EventStatusModelApiManager": {
+  "rva": "0x1cb7e2c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "BaseModelApiManager<EventStatusModel>"
+ },
+ "EventBattleCharacterCollection": {
+  "rva": "0x1cedaf4",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<EventBattleCharacterModel>"
+ },
+ "HomeFollowerCollection": {
+  "rva": "0x1d3246c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<HomeFollowerModel>"
+ },
+ "LiveItemCollection": {
+  "rva": "0x1db6780",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<LiveItemModel>"
+ },
+ "LiveStageCollection": {
+  "rva": "0x1db72f0",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "ReactiveCollection<LiveStageModel>"
+ },
+ "LiveStageMovieCollection": {
+  "rva": "0x1db9828",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "CustomReactiveCollection<LiveStageMovieModel>"
+ },
+ "RankingMusicCollection": {
+  "rva": "0x1dfb66c",
+  "sig": "JsonData data",
+  "fields": [
+   "url",
+   "music_id",
+   "difficulty_id",
+   "kind"
+  ],
+  "parent": "CustomReactiveCollection<RankingMusicModel>"
+ },
+ "RankingPlayerCollection": {
+  "rva": "0x1e02858",
+  "sig": "JsonData data",
+  "fields": [
+   "url",
+   "friend_id"
+  ],
+  "parent": "CustomReactiveCollection<RankingPlayerModel>"
+ },
+ "RankingUnitPowerCollection": {
+  "rva": "0x1e04fd8",
+  "sig": "JsonData data",
+  "fields": [
+   "url",
+   "top",
+   "player"
+  ],
+  "parent": "CustomReactiveCollection<RankingUnitPowerModel>"
+ },
+ "StoryCollection": {
+  "rva": "0x1e229b4",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "CustomReactiveCollection<StoryModel>"
+ },
+ "VoteCollection": {
+  "rva": "0x1e6299c",
+  "sig": "JsonData data",
+  "fields": [],
+  "parent": "CustomReactiveCollection<VoteModel>"
+ }
+}

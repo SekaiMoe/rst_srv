@@ -41,9 +41,15 @@ func (s *Server) livestagePlaygame(c *gin.Context) {
 	}
 	_ = s.Players.Save(pl)
 	log.Printf("[play] uuid=%s stage=%d ap=%d-%d", pl.UUID, stageID, pl.Ap+cost, pl.Ap)
+	// ResponseLivestagePlaygame: status, power, stamina, stamina_updated_at
 	c.JSON(http.StatusOK, gin.H{
 		"code": 200, "message": "ok",
-		"stage_id": stageID, "ap": pl.Ap, "ap_max": pl.ApMax,
+		"status":             1,
+		"stage_id":           stageID,
+		"power":              s.deckPower(pl),
+		"stamina":            pl.Ap,
+		"stamina_max":        pl.ApMax,
+		"stamina_updated_at": pl.ApUpdatedAt.Format("2006-01-02 15:04:05"),
 	})
 }
 
@@ -66,6 +72,7 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 		fullCombo = 1
 	}
 	ranks := hitRanks(c.PostForm("hit_ranks_counts"))
+	eventID, _ := strconv.Atoi(c.PostForm("event_id"))
 
 	st := s.stageRow(stageID)
 	goal := s.stageGoalOf(stageID)
@@ -161,7 +168,6 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 	// ---- 经验 & 活动pt ----
 	pl.Exp += score / 100 // 简单经验公式: score/100
 	s.playerLevelUp(pl)
-	eventID, _ := strconv.Atoi(c.PostForm("event_id"))
 	if eventID > 0 {
 		pl.EventPoints[eventID] += score / 1000
 	}
@@ -173,17 +179,26 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 	log.Printf("[finish] uuid=%s stage=%d score=%d rank=%d fc=%d combo=%d newRecord=%v 奖励%d项",
 		pl.UUID, stageID, score, rank, fullCombo, maxCombo, newRecord, len(rewards))
 
-	c.JSON(http.StatusOK, gin.H{
-		"code": 200, "message": "ok",
-		"stage_id": stageID, "score": score, "rank": rank, "is_clear": isClear,
-		"max_combo": maxCombo, "full_combo": fullCombo,
-		"hit_ranks_counts": ranks,
-		"is_new_record":    newRecord,
-		"best_score":       bs.Score, "best_rank": bs.Rank,
-		"level": pl.Level, "exp": pl.Exp, "ap": pl.Ap, "ap_max": pl.ApMax,
-		"jewel": pl.Jewel, "coin": pl.Coin,
-		"rewards": rewards,
-	})
+	// ResponseLivestageFinishgame: rewards, eventRewards, eventPoint
+	body := walletJSON(pl)
+	body["code"] = 200
+	body["message"] = "ok"
+	body["stage_id"] = stageID
+	body["score"] = score
+	body["rank"] = rank
+	body["is_clear"] = isClear
+	body["max_combo"] = maxCombo
+	body["full_combo"] = fullCombo
+	body["hit_ranks_counts"] = ranks
+	body["is_new_record"] = newRecord
+	body["best_score"] = bs.Score
+	body["best_rank"] = bs.Rank
+	body["rewards"] = rewards
+	if eventID > 0 {
+		body["eventPoint"] = pl.EventPoints[eventID]
+		body["eventRewards"] = []gin.H{}
+	}
+	c.JSON(http.StatusOK, body)
 }
 
 // livestageGameover — 失败结算 (无奖励, 不扣记录)
@@ -227,7 +242,9 @@ func (s *Server) livestageStonecontinue(c *gin.Context) {
 	}
 	pl.Jewel -= cost
 	_ = s.Players.Save(pl)
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "jewel": pl.Jewel})
+	// ResponseLivestageStonecontinue: status, jewel(消耗), freeJewel(余量)
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
+		"jewel": cost, "freeJewel": pl.Jewel, "point_free": pl.Jewel})
 }
 
 // livestageAdscontinue — 广告续命 (纪念服直接免费)

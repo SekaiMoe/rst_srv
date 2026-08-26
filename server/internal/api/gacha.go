@@ -140,13 +140,15 @@ func (s *Server) gachaExecute(c *gin.Context) {
 	log.Printf("[gacha] uuid=%s detail=%d free=%v cost=%d 获得%v",
 		pl.UUID, detailID, isFree, cost, cardIDs(newCards))
 
+	// ResponseGachaExecute: card_ids + id + day_free_count
 	c.JSON(http.StatusOK, gin.H{
 		"code": 200, "message": "ok",
-		"gacha_detail_id": detailID,
-		"is_free":         isFree,
-		"jewel":           pl.Jewel,
-		"card_count":      len(newCards),
-		"cards":           newCards,
+		"id":             detailID,
+		"card_ids":       cardIDs(newCards), // master id 数组
+		"day_free_count": dayFreeOf(s, gachaID),
+		"playerCards":    cardsToJSON(newCards),
+		"point_free":     pl.Jewel,
+		"money":          pl.Coin,
 	})
 }
 
@@ -235,4 +237,19 @@ func (s *Server) playerOf(c *gin.Context) *Player {
 		return nil
 	}
 	return pl
+}
+
+func dayFreeOf(s *Server, gachaID int) int {
+	if g := s.Gacha.Gacha[gachaID]; g != nil {
+		return rowInt(g, "day_free_count")
+	}
+	return 0
+}
+
+func cardsToJSON(cards []Card) []gin.H {
+	out := make([]gin.H, 0, len(cards))
+	for _, c := range cards {
+		out = append(out, cardJSON(c))
+	}
+	return out
 }

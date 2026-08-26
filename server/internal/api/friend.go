@@ -217,7 +217,12 @@ func (s *Server) presentboxGet(c *gin.Context) {
 	pl.Items[strconv.Itoa(itemID)] += n
 	_ = s.Players.Save(pl)
 	log.Printf("[present] uuid=%s 领取 item=%d x%d", pl.UUID, itemID, n)
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "item_id": itemID, "num": n,
+	// ResponsePresentBoxGet: box 长度 + isGetTitle/isGetMusic
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
+		"item_id": itemID, "num": n,
+		"charaBoxLengthBefore": len(pl.Cards) - 1, "charaBoxLength": len(pl.Cards),
+		"acceBoxLengthBefore": 250, "acceBoxLength": 250,
+		"isGetTitle": 0, "isGetMusic": 0, "exchangeMessage": "",
 		"items": pl.Items})
 }
 

@@ -52,15 +52,11 @@ func (s *Server) login2nd(c *gin.Context) {
 		}
 	}
 	log.Printf("[login2nd] uuid=%s name=%s", sess.UUID, pl.Name)
-	c.JSON(http.StatusOK, gin.H{
-		"code":    200,
-		"message": "ok",
-		"token":   token,
-		"name":    pl.Name,
-		"level":   pl.Level,
-		"jewel":   pl.Jewel,
-		"coin":    pl.Coin,
-	})
+	body := userJSON(pl)
+	body["token"] = token
+	body["code"] = 200
+	body["message"] = "ok"
+	c.JSON(http.StatusOK, body)
 }
 
 // login3rd — 三段式登录第三段 (完整玩家数据 + 资源版本同步)
@@ -77,25 +73,35 @@ func (s *Server) login3rd(c *gin.Context) {
 		return
 	}
 	log.Printf("[login3rd] uuid=%s full sync", sess.UUID)
-	c.JSON(http.StatusOK, gin.H{
-		"code":    200,
-		"message": "ok",
-		"token":   token,
-		"player": gin.H{
-			"uuid":         pl.UUID,
-			"name":         pl.Name,
-			"level":        pl.Level,
-			"exp":          pl.Exp,
-			"jewel":        pl.Jewel,
-			"coin":         pl.Coin,
-			"friend_point": pl.FriendPoint,
-			"ap":           pl.Ap,
-			"ap_max":       pl.ApMax,
-		},
-		// 资源版本: 客户端据此决定增量下载 (本地不校验)
-		"assetbundle_version": 2,
-		"cri_audio_version":   2,
-	})
+	body := userJSON(pl)
+	body["token"] = token
+	body["code"] = 200
+	body["message"] = "ok"
+	// 子集合 (UserModel 关联)
+	body["playerCards"] = playerCardsJSON(pl)
+	units := []gin.H{}
+	for i, dk := range pl.Decks {
+		if len(dk) >= 5 && dk[0] != 0 {
+			units = append(units, gin.H{
+				"id": i + 1, "name": pl.DeckNames[i], "leader": dk[0], "unit": dk,
+			})
+		}
+	}
+	body["units"] = units
+	equips := []gin.H{}
+	for cid, acce := range pl.AcceSlots {
+		if len(acce) > 0 {
+			equips = append(equips, gin.H{
+				"player_card_id": cid, "equipments": acce,
+			})
+		}
+	}
+	body["cardEquipments"] = equips
+	body["gachaConsumptionItems"] = []gin.H{}
+	// 资源版本: 客户端据此决定增量下载 (本地不校验)
+	body["assetbundle_version"] = 2
+	body["cri_audio_version"] = 2
+	c.JSON(http.StatusOK, body)
 }
 
 // loginFull — 旧版单段登录

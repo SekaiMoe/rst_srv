@@ -57,7 +57,16 @@ go build -o rstserver .
 
 > **全部 104 个端点已实现, 0 stub** (与 docs/API_DOCUMENTATION.md 完全对齐) |
 
-协议依据: `../LOGIN_FLOW_ANALYSIS.md`（反汇编还原的三段式登录字段）。
+协议依据: docs/LOGIN_FLOW_ANALYSIS.md + **docs/RESPONSE_FIELDS.md** (客户端 SetJson/DTO 静态逆向的权威字段表)。
+
+响应字段已按客户端 DTO 对齐 (2026-08-26):
+- `UserModel`: lv/money/point_free/point_purchased/stamina (IL2CPP 属性直映, 非 level/coin/jewel/ap)
+- `PlayerCardModel`: card_id/lv; login3rd 附带 playerCards/units/cardEquipments 子集合
+- gacha/execute → card_ids[]; playgame → status/power/stamina/stamina_updated_at
+- finishgame → rewards/eventRewards/eventPoint + 钱包字段
+- stonecontinue → status/jewel/freeJewel; presentbox → charaBoxLength 系
+- shop/buy → point_purchased/point_free; achieve → achievement_id[]
+- item/friendpt → friend_pt/total_friend_pt
 
 ### CDN (rs.rst-game.com 替代)
 

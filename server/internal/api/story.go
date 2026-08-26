@@ -121,11 +121,16 @@ func (s *Server) storyRead(c *gin.Context) {
 	}
 	_ = s.Players.Save(pl)
 	log.Printf("[story] uuid=%s read story=%d 奖励%d项", pl.UUID, storyID, len(rewards))
-	c.JSON(http.StatusOK, gin.H{
-		"code": 200, "message": "ok", "story_id": storyID,
-		"label": rowStr(st, "label"), "read": true,
-		"rewards": rewards, "jewel": pl.Jewel, "coin": pl.Coin, "level": pl.Level, "exp": pl.Exp,
-	})
+	// ResponseStoryRead: status, rewards
+	body := walletJSON(pl)
+	body["code"] = 200
+	body["message"] = "ok"
+	body["status"] = 1
+	body["story_id"] = storyID
+	body["label"] = rowStr(st, "label")
+	body["read"] = true
+	body["rewards"] = rewards
+	c.JSON(http.StatusOK, body)
 }
 
 // storyUnlockEvent — 活动剧情解锁 (纪念服: 直接成功)
@@ -145,10 +150,12 @@ func (s *Server) loginbonusGet(c *gin.Context) {
 		pl.GachaFree["loginbonus"] = today
 		pl.Jewel += 50
 		_ = s.Players.Save(pl)
-		c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "jewel": pl.Jewel, "got": 50})
+		c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
+			"point_free": pl.Jewel, "got": 50})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "already got today", "jewel": pl.Jewel, "got": 0})
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "already got today",
+		"point_free": pl.Jewel, "got": 0})
 }
 
 // itemUse — 使用道具 (体力回复/抽奖券等简化处理)

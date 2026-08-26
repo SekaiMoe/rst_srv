@@ -102,8 +102,10 @@ func (s *Server) shopBuy(c *gin.Context) {
 	}
 	_ = s.Players.Save(pl)
 	log.Printf("[shop] uuid=%s pack=%d price=%d paid=%v 获得%d项", pl.UUID, packID, price, isPaid, len(granted))
+	// ResponseShopBuy: point_purchased, point_free
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
-		"shop_item_pack_id": packID, "granted": granted, "coin": pl.Coin, "jewel": pl.Jewel})
+		"shop_item_pack_id": packID, "granted": granted,
+		"point_purchased": 0, "point_free": pl.Jewel, "money": pl.Coin})
 }
 
 func (s *Server) shopBuyMusic(c *gin.Context) { s.shopBuy(c) }
@@ -350,8 +352,17 @@ func (s *Server) achieveGet(c *gin.Context, all bool) {
 	}
 	_ = s.Players.Save(pl)
 	log.Printf("[achieve] uuid=%s 领取%d项", pl.UUID, claimed)
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
-		"claimed": claimed, "rewards": rewards, "jewel": pl.Jewel, "coin": pl.Coin})
+	// ResponseAchiveGetAll: achievement_id[]
+	ids := []int{}
+	for _, r := range rewards {
+		ids = append(ids, r["achievement_id"].(int))
+	}
+	body := walletJSON(pl)
+	body["code"] = 200
+	body["message"] = "ok"
+	body["achievement_id"] = ids
+	body["rewards"] = rewards
+	c.JSON(http.StatusOK, body)
 }
 
 // achieveStock — 达成状态

@@ -103,11 +103,16 @@ func (s *Server) cardGrow(c *gin.Context) {
 	log.Printf("[grow] uuid=%s card#%d(rarity%d) +%dexp 素材%d张 Lv.%d→%d coin-%d",
 		pl.UUID, cardID, rarity, gainExp, len(materialSet), beforeLv, target.Level, cost)
 
+	// ResponseGrow: playerCardModel (PlayerCardModel 字段)
+	card := cardJSON(*target)
+	card["before_level"] = beforeLv
+	card["gain_exp"] = gainExp
 	c.JSON(http.StatusOK, gin.H{
 		"code": 200, "message": "ok",
-		"card_id": cardID, "level": target.Level, "exp": target.Exp,
-		"before_level": beforeLv, "gain_exp": gainExp,
-		"materials_used": len(materialSet), "coin": pl.Coin,
+		"playerCardModel": card,
+		"card":            card,
+		"materials_used":  len(materialSet),
+		"money":           pl.Coin,
 	})
 }
 
