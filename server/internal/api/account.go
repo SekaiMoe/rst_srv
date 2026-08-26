@@ -1,6 +1,7 @@
 package api
 
 import (
+	"time"
 	"crypto/rand"
 	"encoding/hex"
 	"log"
@@ -19,6 +20,9 @@ func (s *Server) login1st(c *gin.Context) {
 	if uuid == "" {
 		// 某些版本走表单
 		uuid = c.PostForm("UUID")
+	if uuid == "" {
+		uuid = c.PostForm("uuid") // 客户端 create 用小写键
+	}
 	}
 	if uuid == "" {
 		c.JSON(http.StatusOK, gin.H{"code": 400, "message": "UUID required"})
@@ -28,18 +32,49 @@ func (s *Server) login1st(c *gin.Context) {
 
 	isNew := !s.Players.Exists(uuid)
 	tok := s.Sessions.Issue(uuid)
-	c.JSON(http.StatusOK, gin.H{
-		"code":    200,
-		"message": "ok",
-		"token":   tok,
-		"is_new":  isNew,
-	})
+	// 响应必须是完整 UserModel 形状 (客户端 SetJson 反射进 UserModel, 缺字段=KeyNotFoundException)
+	body := gin.H{
+		"code": 200, "message": "ok",
+		"token": tok, "dayToken": tok,
+		"is_new": isNew,
+		"id": 1, "uuid": uuid, "name": "プリズムステップ",
+		"lv": 1, "exp": 0,
+		"stamina": 100, "stamina_max": 100,
+		"stamina_updated_at": time.Now().Format("2006-01-02 15:04:05"),
+		"stamina_start_time": "",
+		"chara_box_length": 0, "acce_box_length": 250,
+		"tutorial": 100,
+		"point_purchased": 0, "point_free": 0, "point": 0, "money": 0,
+		"favorite_card_id": 0, "publish_card_id": 0, "title_id": 0,
+		"profile": "", "purchase_price_month": 0,
+		"unlock_event_story_item_num": 0,
+		"playerCards":           []gin.H{},
+		"units":                 []gin.H{},
+		"cardEquipments":        []gin.H{},
+		"gachaConsumptionItems": []gin.H{},
+		"liveStageMovieItems":   []gin.H{},
+		"liveStageMusicItems":   []gin.H{},
+		"characters":            []gin.H{},
+		"liveItems":             []gin.H{},
+	}
+	if !isNew {
+		if pl, err := s.Players.Load(uuid); err == nil {
+			for k, v := range userJSON(pl) {
+				body[k] = v
+			}
+		}
+	}
+	c.JSON(http.StatusOK, body)
 }
 
 // login2nd — 三段式登录第二段 (token 换玩家基础信息)
 func (s *Server) login2nd(c *gin.Context) {
 	token := c.PostForm("token")
 	sess, ok := s.Sessions.Get(token)
+	if !ok {
+		sess, ok = s.Sessions.Adopt(token) // 宽容: 客户端本地生成的 session id
+		log.Printf("[login2nd] adopt token=%.12s ok=%v", token, ok)
+	}
 	if !ok {
 		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
@@ -56,8 +91,20 @@ func (s *Server) login2nd(c *gin.Context) {
 	log.Printf("[login2nd] uuid=%s name=%s", sess.UUID, pl.Name)
 	body := userJSON(pl)
 	body["token"] = token
+	body["dayToken"] = token
 	body["code"] = 200
 	body["message"] = "ok"
+	body["playerCards"] = playerCardsJSON(pl)
+	body["units"] = []gin.H{}
+	body["cardEquipments"] = []gin.H{}
+	body["gachaConsumptionItems"] = []gin.H{}
+	readList := []int{}
+	for sid, ok := range pl.ReadStories {
+		if ok {
+			readList = append(readList, sid)
+		}
+	}
+	body["read"] = readList
 	c.JSON(http.StatusOK, body)
 }
 
@@ -66,19 +113,31 @@ func (s *Server) login3rd(c *gin.Context) {
 	token := c.PostForm("token")
 	sess, ok := s.Sessions.Get(token)
 	if !ok {
+		sess, ok = s.Sessions.Adopt(token)
+		log.Printf("[login3rd] adopt token=%.12s ok=%v", token, ok)
+	}
+	if !ok {
 		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	pl, err := s.Players.Load(sess.UUID)
 	if err != nil {
-		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
-		return
+		pl, err = s.Players.Create(sess.UUID)
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"code": 500, "message": "player init failed"})
+			return
+		}
 	}
-	log.Printf("[login3rd] uuid=%s full sync", sess.UUID)
+	log.Printf("[login3rd] uuid=%s full sync (token=%.12s)", sess.UUID, token)
 	body := userJSON(pl)
 	body["token"] = token
+	body["dayToken"] = token
 	body["code"] = 200
 	body["message"] = "ok"
+	body["playerCards"] = playerCardsJSON(pl)
+	body["units"] = []gin.H{}
+	body["cardEquipments"] = []gin.H{}
+	body["gachaConsumptionItems"] = []gin.H{}
 	// 子集合 (UserModel 关联)
 	body["playerCards"] = playerCardsJSON(pl)
 	units := []gin.H{}
@@ -100,6 +159,13 @@ func (s *Server) login3rd(c *gin.Context) {
 	}
 	body["cardEquipments"] = equips
 	body["gachaConsumptionItems"] = []gin.H{}
+	readList := []int{}
+	for sid, ok := range pl.ReadStories {
+		if ok {
+			readList = append(readList, sid)
+		}
+	}
+	body["read"] = readList
 	// ResponseHomeInfo: achieve_num, present_num, friend_pt, total_friend_pt
 	body["achieve_num"] = 0
 	body["present_num"] = s.presentCount(pl)
@@ -116,6 +182,9 @@ func (s *Server) loginFull(c *gin.Context) {
 	uuid := c.GetHeader("UUID")
 	if uuid == "" {
 		uuid = c.PostForm("UUID")
+	if uuid == "" {
+		uuid = c.PostForm("uuid") // 客户端 create 用小写键
+	}
 	}
 	if uuid == "" || !s.Players.Exists(uuid) {
 		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "account not found"})
@@ -135,6 +204,9 @@ func (s *Server) accountCreate(c *gin.Context) {
 	uuid := c.GetHeader("UUID")
 	if uuid == "" {
 		uuid = c.PostForm("UUID")
+	if uuid == "" {
+		uuid = c.PostForm("uuid") // 客户端 create 用小写键
+	}
 	}
 	if uuid == "" {
 		c.JSON(http.StatusOK, gin.H{"code": 400, "message": "UUID required"})
@@ -150,9 +222,21 @@ func (s *Server) accountCreate(c *gin.Context) {
 	}
 	tok := s.Sessions.Issue(uuid)
 	log.Printf("[create] new player uuid=%s", uuid)
-	c.JSON(http.StatusOK, gin.H{
-		"code": 200, "message": "ok", "token": tok,
-	})
+	pl, _ := s.Players.Load(uuid)
+	body := userJSON(pl)
+	if body == nil {
+		body = gin.H{}
+	}
+	body["code"] = 200
+	body["message"] = "ok"
+	body["token"] = tok
+	body["dayToken"] = tok
+	body["is_new"] = true
+	body["playerCards"] = []gin.H{}
+	body["units"] = []gin.H{}
+	body["cardEquipments"] = []gin.H{}
+	body["gachaConsumptionItems"] = []gin.H{}
+	c.JSON(http.StatusOK, body)
 }
 
 // accountDelete — 删号 (确认后清档)
@@ -189,4 +273,24 @@ func (s *Server) presentCount(pl *Player) int {
 		}
 	}
 	return n
+}
+
+// tutorialAdvance — UserModelApiManager.Tutorial()
+// 客户端在教程各阶段完成时调用; 响应携带最新 UserModel
+func (s *Server) tutorialAdvance(c *gin.Context) {
+	uuid, _ := c.Get("uuid")
+	pl, err := s.Players.Load(uuid.(string))
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"code": 400, "message": "player not found"})
+		return
+	}
+	log.Printf("[tutorial] uuid=%s", uuid)
+	body := userJSON(pl)
+	body["code"] = 200
+	body["message"] = "ok"
+	body["playerCards"] = playerCardsJSON(pl)
+	body["units"] = []gin.H{}
+	body["cardEquipments"] = []gin.H{}
+	body["gachaConsumptionItems"] = []gin.H{}
+	c.JSON(http.StatusOK, body)
 }

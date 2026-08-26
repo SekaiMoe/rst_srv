@@ -176,6 +176,10 @@ func RegisterRoutes(r *gin.Engine, dataDir, masterdataPath string) {
 
 	// ===== 档案 (见 profile.go) =====
 	r.POST("/profile/setname", s.requireAuth, s.profileSetName)
+	// tutorial 推进 (UserModelApiManager.Tutorial, 客户端字面量 "tutorial")
+	for _, p := range []string{"/tutorial", "/user/tutorial", "/profile/tutorial", "/account/tutorial"} {
+		r.POST(p, s.requireAuth, s.tutorialAdvance)
+	}
 	r.POST("/profile/setprofile", s.requireAuth, s.profileSetProfile)
 	r.POST("/profile/settitle", s.requireAuth, s.profileSetTitle)
 	r.POST("/profile/titlelist", s.requireAuth, s.profileTitlelist)
@@ -229,6 +233,11 @@ func (s *Server) requireAuth(c *gin.Context) {
 	}
 	if token != "" {
 		if sess, ok := s.Sessions.Get(token); ok {
+			c.Set("uuid", sess.UUID)
+			c.Next()
+			return
+		}
+		if sess, ok := s.Sessions.Adopt(token); ok {
 			c.Set("uuid", sess.UUID)
 			c.Next()
 			return

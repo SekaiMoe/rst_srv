@@ -9,10 +9,12 @@ import "github.com/gin-gonic/gin"
 //	UserModel:      lv/money/point_free/point_purchased/stamina (不是 level/coin/jewel/ap)
 //	PlayerCardModel: card_id/lv (不是 master_id/level)
 
-// userJSON — UserModel 扁平结构 (login2nd/3rd 响应主体)
+// userJSON — UserModel 扁平结构 (login1st/2nd/3rd 响应主体)
+// ⚠ UserModel.id 是 int (dump.cs), 不能回 UUID 字符串; 纪念服固定 1
 func userJSON(pl *Player) gin.H {
 	return gin.H{
-		"id":                          pl.UUID,
+		"id":                          pl.ID,
+		"uuid":                        pl.UUID,
 		"name":                        pl.Name,
 		"lv":                          pl.Level,
 		"exp":                         pl.Exp,
@@ -21,7 +23,7 @@ func userJSON(pl *Player) gin.H {
 		"stamina_updated_at":          pl.ApUpdatedAt.Format("2006-01-02 15:04:05"),
 		"chara_box_length":            len(pl.Cards),
 		"acce_box_length":             250,
-		"tutorial":                    1,
+		"tutorial":                    100, // TutorialProgress.End — 跳过教程
 		"point_purchased":             0, // 有偿石 (纪念服不区分)
 		"point_free":                  pl.Jewel,
 		"point":                       pl.FriendPoint,

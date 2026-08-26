@@ -39,6 +39,7 @@ type Session struct {
 type SessionStore struct {
 	mu       sync.RWMutex
 	sessions map[string]*Session // token -> session
+	lastUUID string             // 最近一次 login1st 的 uuid (宽容模式用)
 }
 
 func NewSessionStore() *SessionStore {
@@ -51,6 +52,7 @@ func (s *SessionStore) Issue(uuid string) string {
 	tok := hex.EncodeToString(b)
 	s.mu.Lock()
 	s.sessions[tok] = &Session{Token: tok, UUID: uuid, CreatedAt: time.Now()}
+	s.lastUUID = uuid
 	s.mu.Unlock()
 	return tok
 }
@@ -62,9 +64,25 @@ func (s *SessionStore) Get(token string) (*Session, bool) {
 	return sess, ok
 }
 
+// Adopt — 宽容模式: 未知 token (客户端 SessionManager 本地生成的) 绑定到最近登录的玩家
+func (s *SessionStore) Adopt(token string) (*Session, bool) {
+	if token == "" || s.lastUUID == "" {
+		return nil, false
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if sess, ok := s.sessions[token]; ok {
+		return sess, true
+	}
+	sess := &Session{Token: token, UUID: s.lastUUID, CreatedAt: time.Now()}
+	s.sessions[token] = sess
+	return sess, true
+}
+
 // ---- 玩家数据 (JSON 文件存储) ----
 
 type Player struct {
+	ID          int               `json:"id"` // 客户端 UserModel.id (int)
 	UUID        string            `json:"uuid"`
 	Name        string            `json:"name"`
 	CreatedAt   time.Time         `json:"created_at"`
@@ -147,21 +165,32 @@ func (p *PlayerStore) Create(uuid string) (*Player, error) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 	pl := &Player{
+		ID:        1,
 		UUID:      uuid,
 		Name:      "プリズムステップ",
 		CreatedAt: time.Now(),
 		Ap:        100, ApMax: 100,
 		Jewel: 100000, Coin: 1000000, FriendPoint: 10000,
 		Decks:       make([][]int, 5),
-		Items:       map[string]int{},
-		GachaFree:   map[string]string{},
-		BestScores:  map[int]BestScore{},
-		ReadStories: map[int]bool{},
-		EventPoints: map[int]int{},
-		AcceSlots:   map[int][]int{},
-		DeckNames:   make([]string, 5),
-		ApUpdatedAt: time.Now(),
+		// 初始: KiReRe 五人组 [On:STAGE!!] SR (master 1-5), 卡组1
+		Cards: []Card{
+			{ID: 1, MasterID: 1, Level: 30, Exp: 0},
+			{ID: 2, MasterID: 2, Level: 30, Exp: 0},
+			{ID: 3, MasterID: 3, Level: 30, Exp: 0},
+			{ID: 4, MasterID: 4, Level: 30, Exp: 0},
+			{ID: 5, MasterID: 5, Level: 30, Exp: 0},
+		},
+		FavoriteCardID: 1,
+		Items:         map[string]int{},
+		GachaFree:     map[string]string{},
+		BestScores:    map[int]BestScore{},
+		ReadStories:   map[int]bool{1: true, 2: true, 3: true, 4: true, 5: true}, // 序章默认已读(跳过教程重演)
+		EventPoints:   map[int]int{},
+		AcceSlots:     map[int][]int{},
+		DeckNames:     make([]string, 5),
+		ApUpdatedAt:   time.Now(),
 	}
+	pl.Decks[0] = []int{1, 2, 3, 4, 5} // 卡组1 = KiReRe
 	f, err := os.Create(p.path(uuid))
 	if err != nil {
 		return nil, err
