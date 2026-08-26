@@ -21,7 +21,7 @@ import (
 func (s *Server) cardGrow(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
@@ -120,7 +120,7 @@ func (s *Server) cardGrow(c *gin.Context) {
 func (s *Server) cardLock(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
@@ -140,7 +140,7 @@ func (s *Server) cardLock(c *gin.Context) {
 func (s *Server) cardSell(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	ids := parseIntList(c.PostForm("card_ids"))
@@ -179,7 +179,7 @@ func (s *Server) cardSell(c *gin.Context) {
 func (s *Server) deckLeader(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))
@@ -200,7 +200,7 @@ func (s *Server) deckLeader(c *gin.Context) {
 func (s *Server) deckCard(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))

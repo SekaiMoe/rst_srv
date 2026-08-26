@@ -16,7 +16,7 @@ import (
 func (s *Server) friendFollow(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	friendID, _ := strconv.Atoi(c.PostForm("friend_id"))
@@ -58,7 +58,7 @@ func (s *Server) friendFollow(c *gin.Context) {
 func (s *Server) friendUnfollow(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	friendID, _ := strconv.Atoi(c.PostForm("friend_id"))
@@ -72,7 +72,7 @@ func (s *Server) friendUnfollow(c *gin.Context) {
 func (s *Server) friendFollowlist(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	s.charList(c, pl, true)
@@ -82,7 +82,7 @@ func (s *Server) friendFollowlist(c *gin.Context) {
 func (s *Server) friendFollowerlist(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	s.charList(c, pl, false)
@@ -213,7 +213,7 @@ func (s *Server) friendUnfollower(c *gin.Context) { s.friendUnfollow(c) }
 func (s *Server) presentboxList(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	// PresentBoxModel: id,item_kind,item_id,item_num,created_at,deadline,message
@@ -249,7 +249,7 @@ func (s *Server) presentboxList(c *gin.Context) {
 func (s *Server) presentboxGet(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	itemID, _ := strconv.Atoi(c.PostForm("item_id"))
@@ -276,7 +276,7 @@ func (s *Server) presentboxGet(c *gin.Context) {
 func (s *Server) presentboxGetAll(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	got := 0

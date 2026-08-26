@@ -163,6 +163,17 @@ func RegisterRoutes(r *gin.Engine, dataDir, masterdataPath string) {
 	r.POST("/maker/save_slot_unlock", s.requireAuth, s.makerSaveSlotUnlock)
 
 	// ===== 通用 stub =====
+	// ===== 真机协议行为对齐 (2026-08-26 在线探测确认) =====
+	// 全部响应 HTTP 200, 错误在 JSON code 字段:
+	//   404=未知路由  400=业务拒绝  700=token 无效(客户端重新登录)
+	r.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"code": 404, "message": "サービス終了しました"})
+	})
+	r.HandleMethodNotAllowed = true
+	r.NoMethod(func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"code": 404, "message": "サービス終了しました"})
+	})
+
 	// ===== 档案 (见 profile.go) =====
 	r.POST("/profile/setname", s.requireAuth, s.profileSetName)
 	r.POST("/profile/setprofile", s.requireAuth, s.profileSetProfile)
@@ -211,7 +222,8 @@ func (s *Server) requireAuth(c *gin.Context) {
 		token = c.GetHeader("TOKEN") // 客户端反汇编确认: 头字段名为 TOKEN
 	}
 	if uuid == "" && token == "" {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "unauthorized"})
+		// 真机行为: 认证失败 code=700 (客户端触发重新登录)
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		c.Abort()
 		return
 	}
@@ -227,7 +239,7 @@ func (s *Server) requireAuth(c *gin.Context) {
 		c.Next()
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"code": 401, "message": "invalid token or uuid"})
+	c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 	c.Abort()
 }
 

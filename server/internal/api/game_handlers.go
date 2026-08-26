@@ -20,7 +20,7 @@ import (
 func (s *Server) livestagePlaygame(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	stageID, _ := strconv.Atoi(c.PostForm("stage_id"))
@@ -61,7 +61,7 @@ func (s *Server) livestagePlaygame(c *gin.Context) {
 func (s *Server) livestageFinishgame(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	stageID, _ := strconv.Atoi(c.PostForm("stage_id"))
@@ -203,7 +203,7 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 func (s *Server) livestageGameover(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	stageID, _ := strconv.Atoi(c.PostForm("stage_id"))
@@ -224,7 +224,7 @@ func (s *Server) livestageRetrygame(c *gin.Context) {
 func (s *Server) livestageStonecontinue(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	cost := 10
@@ -261,7 +261,7 @@ func (s *Server) livestageFinishpractice(c *gin.Context) {
 func (s *Server) rankingPrivate(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	stage2music := map[int]int{}
@@ -297,7 +297,7 @@ func (s *Server) rankingSelf(c *gin.Context) { s.rankingPrivate(c) }
 func (s *Server) apHealing(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	s.apRegen(pl)

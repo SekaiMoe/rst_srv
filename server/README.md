@@ -146,6 +146,12 @@ buy_music/movie、battle_finish、finishgame eventPoint 等全部按客户端 DT
 附加发现: 认证头字段名为 `TOKEN` (反汇编确认), 已支持 表单 token + 头 TOKEN 双通道。
 明细见 docs/RESPONSE_FIELDS.md。
 
+## 原站在线探测 (2026-08-26)
+
+`api.rst-game.com` 仍全功能运行 (104 路由存活, 认证层有效):
+错误码分类学 **200/404/400/700** 已对齐 — 详见 docs/LIVE_API_PROBE.md。
+code=700(无效token→客户端重登录) 为关键对齐项。
+
 ## 后续开发路线
 
 - [x] ~~全部 104 端点实现完毕 (2026-08-26)~~

@@ -21,7 +21,7 @@ const ACCE_SLOT_MAX = 4
 func (s *Server) cardAcce(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
@@ -110,7 +110,7 @@ func (s *Server) cardAcceSkill(c *gin.Context) {
 func (s *Server) deckBatch(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))
@@ -140,7 +140,7 @@ func (s *Server) deckBatch(c *gin.Context) {
 func (s *Server) cardBatch(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
@@ -151,7 +151,7 @@ func (s *Server) cardBatch(c *gin.Context) {
 func (s *Server) deckDisband(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))
@@ -168,7 +168,7 @@ func (s *Server) deckDisband(c *gin.Context) {
 func (s *Server) deckRename(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))

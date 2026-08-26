@@ -113,7 +113,7 @@ func (s *Server) gachaExecute(c *gin.Context) {
 	count := rowInt(d, "gacha_count")
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 

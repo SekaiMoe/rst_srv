@@ -107,7 +107,7 @@ func (m *MakerStore) Get(id int) *MakerChart {
 func (s *Server) makerUpload(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	// 消耗谱面上传道具 (item 806 谱面アップローダー) — 免费额度不足才扣
@@ -211,7 +211,7 @@ func (s *Server) makerFinishgame(c *gin.Context) {
 func (s *Server) makerFavorite(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	id, _ := strconv.Atoi(c.PostForm("chart_id"))

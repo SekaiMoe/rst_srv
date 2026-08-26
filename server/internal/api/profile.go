@@ -16,7 +16,7 @@ import (
 func (s *Server) profileSetTitle(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	titleID, _ := strconv.Atoi(c.PostForm("title_id"))
@@ -52,7 +52,7 @@ func (s *Server) profileTitlelist(c *gin.Context) {
 func (s *Server) profileSetName(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	name := c.PostForm("name")
@@ -69,7 +69,7 @@ func (s *Server) profileSetName(c *gin.Context) {
 func (s *Server) profileSetProfile(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	pl.ProfileText = c.PostForm("profile")
@@ -81,7 +81,7 @@ func (s *Server) profileSetProfile(c *gin.Context) {
 func (s *Server) profileFavoriteCard(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
@@ -98,7 +98,7 @@ func (s *Server) profileFavoriteCard(c *gin.Context) {
 func (s *Server) profilePublishCard(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
@@ -125,7 +125,7 @@ func (p *Player) ownsCard(id int) bool {
 func (s *Server) itemFriendpt(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	// ResponseItemFriendpt: friend_pt, total_friend_pt

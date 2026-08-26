@@ -24,7 +24,7 @@ import (
 func (s *Server) storyStatus(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	// 拥有的卡 → 解锁的卡面章节
@@ -90,7 +90,7 @@ func (s *Server) storyStatus(c *gin.Context) {
 func (s *Server) storyRead(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	storyID, _ := strconv.Atoi(c.PostForm("story_id"))
@@ -144,7 +144,7 @@ func (s *Server) storyUnlockEvent(c *gin.Context) {
 func (s *Server) loginbonusGet(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	today := todayStr()
@@ -164,7 +164,7 @@ func (s *Server) loginbonusGet(c *gin.Context) {
 func (s *Server) itemUse(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	itemID, _ := strconv.Atoi(c.PostForm("item_id"))
@@ -195,7 +195,7 @@ func (s *Server) itemUse(c *gin.Context) {
 func (s *Server) itemList(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	items := []gin.H{}

@@ -41,7 +41,7 @@ func (s *Server) login2nd(c *gin.Context) {
 	token := c.PostForm("token")
 	sess, ok := s.Sessions.Get(token)
 	if !ok {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "invalid token"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	pl, err := s.Players.Load(sess.UUID)
@@ -66,12 +66,12 @@ func (s *Server) login3rd(c *gin.Context) {
 	token := c.PostForm("token")
 	sess, ok := s.Sessions.Get(token)
 	if !ok {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "invalid token"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	pl, err := s.Players.Load(sess.UUID)
 	if err != nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	log.Printf("[login3rd] uuid=%s full sync", sess.UUID)
@@ -167,7 +167,7 @@ func (s *Server) accountDelete(c *gin.Context) {
 func (s *Server) accountHandoverCode(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	b := make([]byte, 12)

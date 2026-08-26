@@ -21,7 +21,7 @@ import (
 func (s *Server) shopItemlist(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	packs := s.Master["shopItemPack"]
@@ -66,7 +66,7 @@ func (s *Server) shopBuy(c *gin.Context) { s.shopBuyWithExtra(c, "") }
 func (s *Server) shopBuyWithExtra(c *gin.Context, extraKey string) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	packID, _ := strconv.Atoi(c.PostForm("shop_item_pack_id"))
@@ -156,7 +156,7 @@ func (s *Server) repaymentCreate(c *gin.Context) {
 func (s *Server) shopExchangeList(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	// 货币组: group_id -> 消耗
@@ -218,7 +218,7 @@ func (s *Server) shopExchangeList(c *gin.Context) {
 func (s *Server) shopExchange(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	exID, _ := strconv.Atoi(c.PostForm("campaign_exchange_item_id"))
@@ -279,7 +279,7 @@ func (s *Server) shopExchange(c *gin.Context) {
 func (s *Server) achieveList(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	// 本地统计
@@ -335,7 +335,7 @@ func (s *Server) achieveGetAll(c *gin.Context) { s.achieveGet(c, true) }
 func (s *Server) achieveGet(c *gin.Context, all bool) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	achID, _ := strconv.Atoi(c.PostForm("achievement_id"))

@@ -44,7 +44,7 @@ func (s *Server) voteInfoHandler(c *gin.Context) {
 func (s *Server) voteDecision(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	itemID, _ := strconv.Atoi(c.PostForm("vote_item_id"))
@@ -122,7 +122,7 @@ func (s *Server) eventInfoHandler(c *gin.Context) {
 func (s *Server) eventPlaygame(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	eventID, _ := strconv.Atoi(c.PostForm("event_id"))
@@ -202,7 +202,7 @@ func (s *Server) eventBattleStart(c *gin.Context) {
 func (s *Server) eventBattleFinish(c *gin.Context) {
 	pl := s.playerOf(c)
 	if pl == nil {
-		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
 	eventID, _ := strconv.Atoi(c.PostForm("event_id"))
