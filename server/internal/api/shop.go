@@ -69,7 +69,10 @@ func (s *Server) shopBuyWithExtra(c *gin.Context, extraKey string) {
 		c.JSON(http.StatusOK, gin.H{"code": 700, "message": "トークンが存在しない。ログインしなおしかな。"})
 		return
 	}
-	packID, _ := strconv.Atoi(c.PostForm("shop_item_pack_id"))
+	packID, _ := strconv.Atoi(c.PostForm("pack_id")) // 客户端实际字段
+	if packID == 0 {
+		packID, _ = strconv.Atoi(c.PostForm("shop_item_pack_id")) // 兼容
+	}
 	var pack map[string]interface{}
 	for _, p := range s.Master["shopItemPack"] {
 		if rowInt(p, "id") == packID {

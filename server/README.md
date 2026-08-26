@@ -57,7 +57,8 @@ go build -o rstserver .
 
 > **全部 104 个端点已实现, 0 stub** (与 docs/API_DOCUMENTATION.md 完全对齐) |
 
-协议依据: docs/LOGIN_FLOW_ANALYSIS.md + **docs/RESPONSE_FIELDS.md** (客户端 SetJson/DTO 静态逆向的权威字段表)。
+协议依据: docs/LOGIN_FLOW_ANALYSIS.md + docs/RESPONSE_FIELDS.md + **docs/REQUEST_FIELDS.md**
+(请求侧字段来自 69 个 ApiManager 方法 AddData 反汇编: total_score/pack_id/pos/acce_id 等已对齐) (客户端 SetJson/DTO 静态逆向的权威字段表)。
 
 响应字段已按客户端 DTO 对齐 (2026-08-26):
 - `UserModel`: lv/money/point_free/point_purchased/stamina (IL2CPP 属性直映, 非 level/coin/jewel/ap)
@@ -145,6 +146,13 @@ FriendModel/PresentBoxModel 内嵌结构、handover_code、receiptcheck、
 buy_music/movie、battle_finish、finishgame eventPoint 等全部按客户端 DTO 对齐)。
 附加发现: 认证头字段名为 `TOKEN` (反汇编确认), 已支持 表单 token + 头 TOKEN 双通道。
 明细见 docs/RESPONSE_FIELDS.md。
+
+## 请求字段对齐 (2026-08-26)
+
+69 个请求方法反汇编完成 (docs/REQUEST_FIELDS.md), 修正 6 处字段名:
+finishgame `total_score` / shop/buy `pack_id` / deck/card `pos` /
+deck/leader `deck_id+pos` / acce/lock `acce_id` / livestage `unit_id`。
+均保留旧字段名兼容。实测 5/5 通过。
 
 ## 原站在线探测 (2026-08-26)
 

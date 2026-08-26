@@ -1,0 +1,347 @@
+[
+ [
+  "CardEquipmentModelApiManager",
+  "CardAcce",
+  "int playerAcceCardId, int position"
+ ],
+ [
+  "CardEquipmentModelApiManager",
+  "CardBatch",
+  "int basePlayerCardId, int[] playerCardIds"
+ ],
+ [
+  "CardEquipmentModelApiManager",
+  "CardAcceSkill",
+  "int basePlayerCardId, int position"
+ ],
+ [
+  "PlayerCardModelApiManager",
+  "CardGrow",
+  "int[] materialPlayerCardIds"
+ ],
+ [
+  "PlayerCardModelApiManager",
+  "AcceGrow",
+  "int[] materialPlayerCardIds"
+ ],
+ [
+  "PlayerCardModelApiManager",
+  "CardLock",
+  ""
+ ],
+ [
+  "PlayerCardModelApiManager",
+  "AcceLock",
+  ""
+ ],
+ [
+  "UnitModelApiManager",
+  "DeckLeader",
+  "int pos"
+ ],
+ [
+  "UnitModelApiManager",
+  "DeckRename",
+  "string name"
+ ],
+ [
+  "UnitModelApiManager",
+  "DeckBatch",
+  "int[] unitPlayerCardIds"
+ ],
+ [
+  "UnitModelApiManager",
+  "DeckCard",
+  "int cardId, int position"
+ ],
+ [
+  "UnitModelApiManager",
+  "DeckDisband",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "AccountLogin",
+  "string uuid"
+ ],
+ [
+  "UserModelApiManager",
+  "AccountLogin1st",
+  "string uuid"
+ ],
+ [
+  "UserModelApiManager",
+  "AccountLogin2nd",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "AccountLogin3rd",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "AccountCreate",
+  "string uuid"
+ ],
+ [
+  "UserModelApiManager",
+  "ProfileSetName",
+  "string name"
+ ],
+ [
+  "UserModelApiManager",
+  "ProfileSetProfile",
+  "string profile"
+ ],
+ [
+  "UserModelApiManager",
+  "ProfileSetTitle",
+  "int titleId"
+ ],
+ [
+  "UserModelApiManager",
+  "ApHealing",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "Tutorial",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "AccountHandover",
+  "string handover_player_id, string handover_code, string newUUID"
+ ],
+ [
+  "UserModelApiManager",
+  "AccountHandoverCode",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "AccountHandoverNewCode",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "ProfileFavoriteCard",
+  "int cardId"
+ ],
+ [
+  "UserModelApiManager",
+  "ProfilePublishCard",
+  "int cardId"
+ ],
+ [
+  "UserModelApiManager",
+  "ItemFriendpt",
+  ""
+ ],
+ [
+  "UserModelApiManager",
+  "AccountDelete",
+  "string uuid"
+ ],
+ [
+  "UserModelApiManager",
+  "AccountDeleteInfo",
+  "string uuid"
+ ],
+ [
+  "UserModelApiManager",
+  "FindPlayerData",
+  "Hashtable conditions"
+ ],
+ [
+  "AchievementModelApiManager",
+  "AchieveGet",
+  ""
+ ],
+ [
+  "AchievementModelApiManager",
+  "AchieveStocks",
+  ""
+ ],
+ [
+  "EditModeLiveModelApiManager",
+  "LivestagePlaygame",
+  "int makerId"
+ ],
+ [
+  "EditModeLiveModelApiManager",
+  "LivestageRetrygame",
+  "int makerId"
+ ],
+ [
+  "EditModeLiveModelApiManager",
+  "LivestageContinue",
+  ""
+ ],
+ [
+  "EditModeLiveModelApiManager",
+  "LivestageGameover",
+  ""
+ ],
+ [
+  "EditModeLiveModelApiManager",
+  "LivestageFinishgame",
+  "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRankCount, PlayLog[] playLogs"
+ ],
+ [
+  "EventStatusModelApiManager",
+  "PastEvents",
+  ""
+ ],
+ [
+  "Event02ModelApiManager",
+  "EventPlayGame",
+  "int stageId, int unitId, int leaderPosition, int[] cardIds, int[][] equipmentIds, int medleyId = -1, int[] musicIds"
+ ],
+ [
+  "Event02ModelApiManager",
+  "EventFinishgame",
+  "int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRanksCount, int unitId, int leaderPosition, int[] cardIds, int[][] equipmentIds, int medleyId = -1, int[] musicIds"
+ ],
+ [
+  "Event02ModelApiManager",
+  "BackgroundRetryEventFinishgame",
+  "int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRanksCount, int unitId, int leaderPosition, int[] cardIds, int[][] equipmentIds"
+ ],
+ [
+  "Event02ModelApiManager",
+  "EventGameover",
+  ""
+ ],
+ [
+  "EventBattleModelApiManager",
+  "EventBattleFinish",
+  "bool win, int[] remainingLife"
+ ],
+ [
+  "FriendModelApiManager",
+  "FriendFollow",
+  ""
+ ],
+ [
+  "FriendModelApiManager",
+  "FriendUnfollow",
+  ""
+ ],
+ [
+  "FriendModelApiManager",
+  "FriendUnfollower",
+  ""
+ ],
+ [
+  "GachaPlayerModelApiManager",
+  "GachaPlay",
+  "int gachaDetailId"
+ ],
+ [
+  "HomeInfoModelApiManager",
+  "HomeInfo",
+  ""
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestagePlaygame",
+  "int movieId, int useEventTicket, int expItem, int friendlyItem, int coinItem, int dropItem"
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestageRetrygame",
+  "int movieId, int useEventTicket, int expItem, int friendlyItem, int coinItem, int dropItem"
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestageStonecontinue",
+  ""
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestageAdscontinue",
+  ""
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestageGameover",
+  ""
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestageFinishgame",
+  "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRankCount, PlayLog[] playLogs"
+ ],
+ [
+  "LiveStageModelApiManager",
+  "LivestageFinishpractice",
+  "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int life, int[] hitRankCount, PlayLog[] playLogs"
+ ],
+ [
+  "LiveStageModelApiManager",
+  "BackgroundRetryFinishgame",
+  "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRankCount, PlayLog[] playLogs"
+ ],
+ [
+  "PresentBoxModelApiManager",
+  "PresentboxGet",
+  ""
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopReceiptcheck2",
+  "int price, string receipt, int masterId"
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopBuy",
+  "int pack_id"
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopPurchaseList",
+  ""
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopExchangeList",
+  ""
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopExchange",
+  "int id, int num"
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopBuyMovie",
+  "int movieId"
+ ],
+ [
+  "ShopModelApiManager",
+  "ShopBuyMusic",
+  "int musicId"
+ ],
+ [
+  "StoryModelApiManager",
+  "StoryStatus",
+  "int storyId"
+ ],
+ [
+  "StoryModelApiManager",
+  "StoryRead",
+  "int storyId"
+ ],
+ [
+  "StoryModelApiManager",
+  "StoryUnlockEvent",
+  "int eventId"
+ ],
+ [
+  "Test001ModelApiManager",
+  "Execute",
+  "int cnt"
+ ]
+]

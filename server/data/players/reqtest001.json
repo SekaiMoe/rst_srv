@@ -1,0 +1,140 @@
+{
+  "uuid": "req-test-001",
+  "name": "プリズムステップ",
+  "created_at": "2026-08-26T21:46:51.986382897+08:00",
+  "jewel": 97500,
+  "coin": 1010900,
+  "friend_point": 10000,
+  "level": 11,
+  "exp": 1300,
+  "ap": 100,
+  "ap_max": 100,
+  "cards": [
+    {
+      "id": 1,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 2,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 3,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 4,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 5,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 6,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 7,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 8,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 9,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 10,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    }
+  ],
+  "decks": [
+    [
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    null,
+    null,
+    null,
+    null
+  ],
+  "items": {
+    "2": 650,
+    "204": 5
+  },
+  "gacha_free": {},
+  "best_scores": {
+    "1": {
+      "score": 130000,
+      "max_combo": 80,
+      "full_combo": 0,
+      "rank": 4,
+      "plays": 1,
+      "got": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    }
+  },
+  "read_stories": {},
+  "event_points": {},
+  "ap_updated_at": "2026-08-26T21:46:51.986385918+08:00",
+  "profile_text": "",
+  "title_id": 0,
+  "favorite_card_id": 0,
+  "publish_card_id": 0,
+  "acce_slots": {},
+  "deck_names": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ]
+}

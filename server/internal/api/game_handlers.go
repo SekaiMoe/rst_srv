@@ -65,7 +65,10 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 		return
 	}
 	stageID, _ := strconv.Atoi(c.PostForm("stage_id"))
-	score, _ := strconv.Atoi(c.PostForm("score"))
+	score, _ := strconv.Atoi(c.PostForm("total_score")) // 客户端实际字段 (REQUEST_FIELDS.md)
+	if score == 0 {
+		score, _ = strconv.Atoi(c.PostForm("score")) // 兼容
+	}
 	maxCombo, _ := strconv.Atoi(c.PostForm("max_combo"))
 	fullCombo, _ := strconv.Atoi(c.PostForm("full_combo"))
 	if fullCombo == 0 && c.PostForm("is_full_combo") == "1" {
@@ -73,6 +76,8 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 	}
 	ranks := hitRanks(c.PostForm("hit_ranks_counts"))
 	eventID, _ := strconv.Atoi(c.PostForm("event_id"))
+	_ = c.PostForm("unit_id") // 编成上下文 (客户端发送, 纪念服不强校验)
+	_ = c.PostForm("friend_id")
 
 	st := s.stageRow(stageID)
 	goal := s.stageGoalOf(stageID)

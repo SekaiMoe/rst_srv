@@ -1,0 +1,3167 @@
+{
+ "CardEquipmentModelApiManager.CardAcce": {
+  "class": "CardEquipmentModelApiManager",
+  "args": "int playerAcceCardId, int position",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "pos",
+   "acce_id",
+   "card/acce",
+   "card_id",
+   "url",
+   "card/acce",
+   "TOKEN",
+   "card_id",
+   "pos",
+   "acce_id"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ],
+   [
+    "card_id",
+    "card_id"
+   ],
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "card/acce"
+ },
+ "CardEquipmentModelApiManager.CardBatch": {
+  "class": "CardEquipmentModelApiManager",
+  "args": "int basePlayerCardId, int[] playerCardIds",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "url",
+    "url"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "card/batch",
+   "]",
+   "acce_ids[",
+   "card_id",
+   "url",
+   "card/batch",
+   "TOKEN",
+   "card_id",
+   "acce_ids[",
+   "]"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "card/batch"
+ },
+ "CardEquipmentModelApiManager.CardAcceSkill": {
+  "class": "CardEquipmentModelApiManager",
+  "args": "int basePlayerCardId, int position",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "pos",
+   "card//acce_skill",
+   "card_id",
+   "url",
+   "card//acce_skill",
+   "TOKEN",
+   "card_id",
+   "pos"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ],
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "card//acce_skill"
+ },
+ "PlayerCardModelApiManager.CardGrow": {
+  "class": "PlayerCardModelApiManager",
+  "args": "int[] materialPlayerCardIds",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "url",
+    "url"
+   ]
+  ],
+  "strs": [
+   "url",
+   "mate_card_ids[",
+   "card/grow",
+   "TOKEN",
+   "]",
+   "card_id",
+   "url",
+   "card/grow",
+   "TOKEN",
+   "card_id",
+   "mate_card_ids[",
+   "]"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "card/grow"
+ },
+ "PlayerCardModelApiManager.AcceGrow": {
+  "class": "PlayerCardModelApiManager",
+  "args": "int[] materialPlayerCardIds",
+  "calls": [
+   [
+    "header",
+    "]",
+    null
+   ],
+   [
+    "data",
+    "]",
+    "]"
+   ],
+   [
+    "data",
+    "url",
+    "url"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "acce/grow",
+   "mate_acce_ids[",
+   "acce_id",
+   "]",
+   "url",
+   "acce/grow",
+   "TOKEN",
+   "acce_id",
+   "mate_acce_ids[",
+   "]"
+  ],
+  "fields": [],
+  "endpoint": "acce/grow"
+ },
+ "PlayerCardModelApiManager.CardLock": {
+  "class": "PlayerCardModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "card/lock",
+   "card_id",
+   "url",
+   "card/lock",
+   "TOKEN",
+   "card_id"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "card/lock"
+ },
+ "PlayerCardModelApiManager.AcceLock": {
+  "class": "PlayerCardModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "acce_id",
+    null
+   ],
+   [
+    "data",
+    "acce_id",
+    "acce_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "acce/lock",
+   "acce_id",
+   "url",
+   "acce/lock",
+   "TOKEN",
+   "acce_id"
+  ],
+  "fields": [
+   [
+    "acce_id",
+    "acce_id"
+   ]
+  ],
+  "endpoint": "acce/lock"
+ },
+ "UnitModelApiManager.DeckLeader": {
+  "class": "UnitModelApiManager",
+  "args": "int pos",
+  "calls": [
+   [
+    "header",
+    "pos",
+    null
+   ],
+   [
+    "data",
+    "pos",
+    "pos"
+   ],
+   [
+    "data",
+    "pos",
+    "pos"
+   ]
+  ],
+  "strs": [
+   "url",
+   "deck_id",
+   "TOKEN",
+   "deck/leader",
+   "pos",
+   "url",
+   "deck/leader",
+   "TOKEN",
+   "deck_id",
+   "pos"
+  ],
+  "fields": [
+   [
+    "pos",
+    "pos"
+   ],
+   [
+    "pos",
+    "pos"
+   ]
+  ],
+  "endpoint": "deck/leader"
+ },
+ "UnitModelApiManager.DeckRename": {
+  "class": "UnitModelApiManager",
+  "args": "string name",
+  "calls": [
+   [
+    "header",
+    "name",
+    null
+   ],
+   [
+    "data",
+    "name",
+    "name"
+   ],
+   [
+    "data",
+    "name",
+    "name"
+   ]
+  ],
+  "strs": [
+   "url",
+   "deck_id",
+   "TOKEN",
+   "deck/rename",
+   "name",
+   "url",
+   "deck/rename",
+   "TOKEN",
+   "deck_id",
+   "name"
+  ],
+  "fields": [
+   [
+    "name",
+    "name"
+   ],
+   [
+    "name",
+    "name"
+   ]
+  ],
+  "endpoint": "deck/rename"
+ },
+ "UnitModelApiManager.DeckBatch": {
+  "class": "UnitModelApiManager",
+  "args": "int[] unitPlayerCardIds",
+  "calls": [
+   [
+    "header",
+    "]",
+    null
+   ],
+   [
+    "data",
+    "]",
+    "]"
+   ],
+   [
+    "data",
+    "url",
+    "url"
+   ]
+  ],
+  "strs": [
+   "url",
+   "deck/batch",
+   "deck_id",
+   "TOKEN",
+   "card_ids[",
+   "]",
+   "url",
+   "deck/batch",
+   "TOKEN",
+   "deck_id",
+   "card_ids[",
+   "]"
+  ],
+  "fields": [],
+  "endpoint": "deck/batch"
+ },
+ "UnitModelApiManager.DeckCard": {
+  "class": "UnitModelApiManager",
+  "args": "int cardId, int position",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "deck/card",
+   "deck_id",
+   "TOKEN",
+   "pos",
+   "card_id",
+   "url",
+   "deck/card",
+   "TOKEN",
+   "deck_id",
+   "card_id",
+   "pos"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ],
+   [
+    "card_id",
+    "card_id"
+   ],
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "deck/card"
+ },
+ "UnitModelApiManager.DeckDisband": {
+  "class": "UnitModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "data",
+    "TOKEN",
+    "TOKEN"
+   ]
+  ],
+  "strs": [
+   "url",
+   "deck/disband",
+   "deck_id",
+   "TOKEN",
+   "url",
+   "deck/disband",
+   "TOKEN",
+   "deck_id"
+  ],
+  "fields": [],
+  "endpoint": "deck/disband"
+ },
+ "UserModelApiManager.AccountLogin": {
+  "class": "UserModelApiManager",
+  "args": "string uuid",
+  "calls": [
+   [
+    "header",
+    null,
+    null
+   ],
+   [
+    "header",
+    "name",
+    null
+   ],
+   [
+    "data",
+    "name",
+    "account/login"
+   ],
+   [
+    "header",
+    "profile/setprofile",
+    "account/login"
+   ],
+   [
+    "data",
+    "profile/setprofile",
+    "name"
+   ]
+  ],
+  "strs": [
+   "UUID",
+   "url",
+   "UUID",
+   "account/login",
+   "url",
+   "account/login",
+   "url",
+   "profile/setname",
+   "TOKEN",
+   "name",
+   "url",
+   "profile/setname",
+   "TOKEN",
+   "name",
+   "url",
+   "profile",
+   "TOKEN",
+   "profile/setprofile",
+   "url",
+   "profile/setprofile",
+   "TOKEN",
+   "profile"
+  ],
+  "fields": [
+   [
+    "name",
+    "account/login"
+   ]
+  ],
+  "endpoint": "profile/setprofile"
+ },
+ "UserModelApiManager.AccountLogin1st": {
+  "class": "UserModelApiManager",
+  "args": "string uuid",
+  "calls": [],
+  "strs": [],
+  "fields": [],
+  "endpoint": null
+ },
+ "UserModelApiManager.AccountLogin2nd": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [],
+  "strs": [],
+  "fields": [],
+  "endpoint": null
+ },
+ "UserModelApiManager.AccountLogin3rd": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [],
+  "strs": [],
+  "fields": [],
+  "endpoint": null
+ },
+ "UserModelApiManager.AccountCreate": {
+  "class": "UserModelApiManager",
+  "args": "string uuid",
+  "calls": [
+   [
+    "data",
+    null,
+    null
+   ]
+  ],
+  "strs": [
+   "uuid",
+   "url",
+   "account/create",
+   "uuid",
+   "url",
+   "account/create"
+  ],
+  "fields": [],
+  "endpoint": "account/create"
+ },
+ "UserModelApiManager.ProfileSetName": {
+  "class": "UserModelApiManager",
+  "args": "string name",
+  "calls": [
+   [
+    "header",
+    "name",
+    null
+   ],
+   [
+    "data",
+    "name",
+    null
+   ],
+   [
+    "header",
+    "profile/setprofile",
+    null
+   ],
+   [
+    "data",
+    "profile/setprofile",
+    "name"
+   ],
+   [
+    "header",
+    "profile/settitle",
+    "name"
+   ]
+  ],
+  "strs": [
+   "url",
+   "profile/setname",
+   "TOKEN",
+   "name",
+   "url",
+   "profile/setname",
+   "TOKEN",
+   "name",
+   "url",
+   "profile",
+   "TOKEN",
+   "profile/setprofile",
+   "url",
+   "profile/setprofile",
+   "TOKEN",
+   "profile",
+   "url",
+   "title_id",
+   "TOKEN",
+   "profile/settitle",
+   "url",
+   "profile/settitle",
+   "TOKEN",
+   "title_id"
+  ],
+  "fields": [
+   "name"
+  ],
+  "endpoint": "profile/settitle"
+ },
+ "UserModelApiManager.ProfileSetProfile": {
+  "class": "UserModelApiManager",
+  "args": "string profile",
+  "calls": [
+   [
+    "header",
+    "profile/setprofile",
+    null
+   ],
+   [
+    "data",
+    "profile/setprofile",
+    null
+   ],
+   [
+    "header",
+    "profile/settitle",
+    null
+   ],
+   [
+    "data",
+    "profile/settitle",
+    "profile/setprofile"
+   ]
+  ],
+  "strs": [
+   "url",
+   "profile",
+   "TOKEN",
+   "profile/setprofile",
+   "url",
+   "profile/setprofile",
+   "TOKEN",
+   "profile",
+   "url",
+   "title_id",
+   "TOKEN",
+   "profile/settitle",
+   "url",
+   "profile/settitle",
+   "TOKEN",
+   "title_id"
+  ],
+  "fields": [],
+  "endpoint": "profile/settitle"
+ },
+ "UserModelApiManager.ProfileSetTitle": {
+  "class": "UserModelApiManager",
+  "args": "int titleId",
+  "calls": [
+   [
+    "header",
+    "profile/settitle",
+    null
+   ],
+   [
+    "data",
+    "profile/settitle",
+    "profile/settitle"
+   ]
+  ],
+  "strs": [
+   "url",
+   "title_id",
+   "TOKEN",
+   "profile/settitle",
+   "url",
+   "profile/settitle",
+   "TOKEN",
+   "title_id"
+  ],
+  "fields": [],
+  "endpoint": "profile/settitle"
+ },
+ "UserModelApiManager.ApHealing": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "progress",
+    null
+   ],
+   [
+    "data",
+    "progress",
+    "TOKEN"
+   ]
+  ],
+  "strs": [
+   "url",
+   "ap/healing",
+   "TOKEN",
+   "url",
+   "ap/healing",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "tutorial",
+   "progress",
+   "url",
+   "tutorial",
+   "TOKEN",
+   "progress"
+  ],
+  "fields": [
+   [
+    "progress",
+    "TOKEN"
+   ]
+  ],
+  "endpoint": "ap/healing"
+ },
+ "UserModelApiManager.Tutorial": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "progress",
+    null
+   ],
+   [
+    "data",
+    "progress",
+    "progress"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "tutorial",
+   "progress",
+   "url",
+   "tutorial",
+   "TOKEN",
+   "progress"
+  ],
+  "fields": [
+   [
+    "progress",
+    "progress"
+   ]
+  ],
+  "endpoint": null
+ },
+ "UserModelApiManager.AccountHandover": {
+  "class": "UserModelApiManager",
+  "args": "string handover_player_id, string handover_code, string newUUID",
+  "calls": [
+   [
+    "data",
+    "handover_player_id",
+    null
+   ],
+   [
+    "data",
+    "handover_player_id",
+    "handover_player_id"
+   ],
+   [
+    "data",
+    "handover_player_id",
+    "handover_player_id"
+   ],
+   [
+    "header",
+    "account/handover_code",
+    "handover_player_id"
+   ],
+   [
+    "header",
+    "TOKEN",
+    "handover_player_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "handover_code",
+   "account/handover",
+   "uuid",
+   "handover_player_id",
+   "url",
+   "account/handover",
+   "handover_code",
+   "handover_player_id",
+   "uuid",
+   "url",
+   "TOKEN",
+   "account/handover_code",
+   "url",
+   "account/handover_code",
+   "TOKEN",
+   "url",
+   "account/handover_new_code",
+   "TOKEN",
+   "url",
+   "account/handover_new_code",
+   "TOKEN"
+  ],
+  "fields": [
+   "handover_player_id",
+   [
+    "handover_player_id",
+    "handover_player_id"
+   ],
+   [
+    "handover_player_id",
+    "handover_player_id"
+   ]
+  ],
+  "endpoint": "account/handover_new_code"
+ },
+ "UserModelApiManager.AccountHandoverCode": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "account/handover_code",
+    null
+   ],
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "account/handover_code"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "account/handover_code",
+   "url",
+   "account/handover_code",
+   "TOKEN",
+   "url",
+   "account/handover_new_code",
+   "TOKEN",
+   "url",
+   "account/handover_new_code",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "profile/favorite_card",
+   "card_id",
+   "url",
+   "profile/favorite_card",
+   "TOKEN",
+   "card_id"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "account/handover_code"
+   ]
+  ],
+  "endpoint": "profile/favorite_card"
+ },
+ "UserModelApiManager.AccountHandoverNewCode": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "TOKEN"
+   ]
+  ],
+  "strs": [
+   "url",
+   "account/handover_new_code",
+   "TOKEN",
+   "url",
+   "account/handover_new_code",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "profile/favorite_card",
+   "card_id",
+   "url",
+   "profile/favorite_card",
+   "TOKEN",
+   "card_id"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "TOKEN"
+   ]
+  ],
+  "endpoint": "profile/favorite_card"
+ },
+ "UserModelApiManager.ProfileFavoriteCard": {
+  "class": "UserModelApiManager",
+  "args": "int cardId",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "profile/favorite_card",
+   "card_id",
+   "url",
+   "profile/favorite_card",
+   "TOKEN",
+   "card_id"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "profile/favorite_card"
+ },
+ "UserModelApiManager.ProfilePublishCard": {
+  "class": "UserModelApiManager",
+  "args": "int cardId",
+  "calls": [
+   [
+    "header",
+    "card_id",
+    null
+   ],
+   [
+    "data",
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "profile/publish_card",
+   "TOKEN",
+   "card_id",
+   "url",
+   "profile/publish_card",
+   "TOKEN",
+   "card_id"
+  ],
+  "fields": [
+   [
+    "card_id",
+    "card_id"
+   ]
+  ],
+  "endpoint": "profile/publish_card"
+ },
+ "UserModelApiManager.ItemFriendpt": {
+  "class": "UserModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "account/delete",
+    "TOKEN"
+   ],
+   [
+    "header",
+    "account/delete_info",
+    "account/delete"
+   ]
+  ],
+  "strs": [
+   "url",
+   "item/friendpt",
+   "TOKEN",
+   "url",
+   "item/friendpt",
+   "TOKEN",
+   "url",
+   "UUID",
+   "account/delete",
+   "url",
+   "account/delete",
+   "UUID",
+   "url",
+   "UUID",
+   "account/delete_info",
+   "url",
+   "account/delete_info",
+   "UUID"
+  ],
+  "fields": [],
+  "endpoint": "account/delete_info"
+ },
+ "UserModelApiManager.AccountDelete": {
+  "class": "UserModelApiManager",
+  "args": "string uuid",
+  "calls": [
+   [
+    "header",
+    "account/delete",
+    null
+   ],
+   [
+    "header",
+    "account/delete_info",
+    "account/delete"
+   ]
+  ],
+  "strs": [
+   "url",
+   "UUID",
+   "account/delete",
+   "url",
+   "account/delete",
+   "UUID",
+   "url",
+   "UUID",
+   "account/delete_info",
+   "url",
+   "account/delete_info",
+   "UUID"
+  ],
+  "fields": [],
+  "endpoint": "account/delete_info"
+ },
+ "UserModelApiManager.AccountDeleteInfo": {
+  "class": "UserModelApiManager",
+  "args": "string uuid",
+  "calls": [
+   [
+    "header",
+    "account/delete_info",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "UUID",
+   "account/delete_info",
+   "url",
+   "account/delete_info",
+   "UUID"
+  ],
+  "fields": [],
+  "endpoint": "account/delete_info"
+ },
+ "UserModelApiManager.FindPlayerData": {
+  "class": "UserModelApiManager",
+  "args": "Hashtable conditions",
+  "calls": [],
+  "strs": [
+   "ポイントが不足している",
+   "ポイントが不足している"
+  ],
+  "fields": [],
+  "endpoint": null
+ },
+ "AchievementModelApiManager.AchieveGet": {
+  "class": "AchievementModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "id",
+    null
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "achieve/get",
+   "id",
+   "url",
+   "achieve/get",
+   "TOKEN",
+   "id"
+  ],
+  "fields": [],
+  "endpoint": "achieve/get"
+ },
+ "AchievementModelApiManager.AchieveStocks": {
+  "class": "AchievementModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "achieve/stock",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "achieve/stock",
+   "url",
+   "achieve/stock",
+   "TOKEN"
+  ],
+  "fields": [],
+  "endpoint": "achieve/stock"
+ },
+ "EditModeLiveModelApiManager.LivestagePlaygame": {
+  "class": "EditModeLiveModelApiManager",
+  "args": "int makerId",
+  "calls": [
+   [
+    "header",
+    "maker_id",
+    null
+   ],
+   [
+    "data",
+    "maker_id",
+    "maker_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "maker/playgame",
+   "maker_id",
+   "url",
+   "maker/playgame",
+   "TOKEN",
+   "maker_id"
+  ],
+  "fields": [
+   [
+    "maker_id",
+    "maker_id"
+   ]
+  ],
+  "endpoint": "maker/playgame"
+ },
+ "EditModeLiveModelApiManager.LivestageRetrygame": {
+  "class": "EditModeLiveModelApiManager",
+  "args": "int makerId",
+  "calls": [
+   [
+    "header",
+    "maker/retrygame",
+    null
+   ],
+   [
+    "header",
+    "maker/continue",
+    null
+   ],
+   [
+    "header",
+    "TOKEN",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "maker/retrygame",
+   "url",
+   "maker/retrygame",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "maker/continue",
+   "url",
+   "maker/continue",
+   "TOKEN",
+   "url",
+   "maker/gameover",
+   "TOKEN",
+   "url",
+   "maker/gameover",
+   "TOKEN",
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN"
+  ],
+  "fields": [],
+  "endpoint": "maker/gameover"
+ },
+ "EditModeLiveModelApiManager.LivestageContinue": {
+  "class": "EditModeLiveModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "maker/continue",
+    null
+   ],
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "unit_id",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "maker/continue",
+   "url",
+   "maker/continue",
+   "TOKEN",
+   "url",
+   "maker/gameover",
+   "TOKEN",
+   "url",
+   "maker/gameover",
+   "TOKEN",
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "maker/finishgame",
+   "",
+   "hit_ranks_counts",
+   "play_log",
+   "0",
+   "unit_id",
+   "url",
+   "maker/finishgame",
+   "TOKEN",
+   "unit_id",
+   "0",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo"
+  ],
+  "fields": [],
+  "endpoint": "maker/finishgame"
+ },
+ "EditModeLiveModelApiManager.LivestageGameover": {
+  "class": "EditModeLiveModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "data",
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "data",
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "data",
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "data",
+    "unit_id",
+    "TOKEN"
+   ]
+  ],
+  "strs": [
+   "url",
+   "maker/gameover",
+   "TOKEN",
+   "url",
+   "maker/gameover",
+   "TOKEN",
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "maker/finishgame",
+   "",
+   "hit_ranks_counts",
+   "play_log",
+   "0",
+   "unit_id",
+   "url",
+   "maker/finishgame",
+   "TOKEN",
+   "unit_id",
+   "0",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "hit_ranks_counts",
+   "play_log",
+   ""
+  ],
+  "fields": [
+   "unit_id",
+   "unit_id",
+   [
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "unit_id",
+    "TOKEN"
+   ],
+   [
+    "unit_id",
+    "TOKEN"
+   ]
+  ],
+  "endpoint": "maker/finishgame"
+ },
+ "EditModeLiveModelApiManager.LivestageFinishgame": {
+  "class": "EditModeLiveModelApiManager",
+  "args": "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRankCount, PlayLog[] playLogs",
+  "calls": [
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "maker/finishgame",
+   "",
+   "hit_ranks_counts",
+   "play_log",
+   "0",
+   "unit_id",
+   "url",
+   "maker/finishgame",
+   "TOKEN",
+   "unit_id",
+   "0",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "hit_ranks_counts",
+   "play_log",
+   ""
+  ],
+  "fields": [
+   "unit_id",
+   "unit_id",
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "endpoint": "maker/finishgame"
+ },
+ "EventStatusModelApiManager.PastEvents": {
+  "class": "EventStatusModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "ranking/past",
+    null
+   ],
+   [
+    "header",
+    "TOKEN",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "ranking/past",
+   "url",
+   "ranking/past",
+   "TOKEN",
+   "url",
+   "item/livestage",
+   "TOKEN",
+   "url",
+   "item/livestage",
+   "TOKEN",
+   "{\n            \"code\": \"0\",\n            \"message\": \"\",\n            \"data\": {\n                \"ranking\": \"161\",\n                \"point\": \"382\",\n            }\n        }",
+   "テストデータ設定",
+   "テストデータ設定",
+   "{\n            \"code\": \"0\",\n            \"message\": \"\",\n            \"data\": {\n                \"ranking\": \"161\",\n                \"point\": \"382\",\n            }\n        }"
+  ],
+  "fields": [],
+  "endpoint": "item/livestage"
+ },
+ "Event02ModelApiManager.EventPlayGame": {
+  "class": "Event02ModelApiManager",
+  "args": "int stageId, int unitId, int leaderPosition, int[] cardIds, int[][] equipmentIds, int medleyId = -1, int[] musicIds",
+  "calls": [
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "url",
+    "url"
+   ],
+   [
+    "data",
+    "url",
+    "url"
+   ]
+  ],
+  "strs": [
+   "url",
+   "equipment_ids[",
+   "][",
+   "medley_id",
+   "TOKEN",
+   "stage_id",
+   "music_ids[",
+   "card_ids[",
+   "pos",
+   "event/playgame",
+   "]",
+   "unit_id",
+   "url",
+   "event/playgame",
+   "TOKEN",
+   "stage_id",
+   "unit_id",
+   "pos",
+   "]",
+   "card_ids[",
+   "equipment_ids[",
+   "]["
+  ],
+  "fields": [
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "endpoint": "event/playgame"
+ },
+ "Event02ModelApiManager.EventFinishgame": {
+  "class": "Event02ModelApiManager",
+  "args": "int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRanksCount, int unitId, int leaderPosition, int[] cardIds, int[][] equipmentIds, int medleyId = -1, int[] musicIds",
+  "calls": [
+   [
+    "header",
+    "event/finishgame",
+    null
+   ],
+   [
+    "data",
+    "event/finishgame",
+    null
+   ],
+   [
+    "data",
+    "event/finishgame",
+    "event/finishgame"
+   ],
+   [
+    "data",
+    "event/finishgame",
+    "event/finishgame"
+   ],
+   [
+    "data",
+    "event/finishgame",
+    "event/finishgame"
+   ],
+   [
+    "data",
+    "event/finishgame",
+    "event/finishgame"
+   ],
+   [
+    "data",
+    "event/finishgame",
+    "event/finishgame"
+   ],
+   [
+    "data",
+    "event/finishgame",
+    "event/finishgame"
+   ],
+   [
+    "data",
+    "pos",
+    "pos"
+   ]
+  ],
+  "strs": [
+   "url",
+   "equipment_ids[",
+   "total_score",
+   "][",
+   "medley_id",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "music_ids[",
+   "card_ids[",
+   "pos",
+   "]",
+   "hit_ranks_counts",
+   "0",
+   "unit_id",
+   "event/finishgame",
+   "url",
+   "event/finishgame",
+   "TOKEN",
+   "friend_id",
+   "0",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "unit_id",
+   "hit_ranks_counts",
+   "pos",
+   "]",
+   "card_ids[",
+   "equipment_ids[",
+   "]["
+  ],
+  "fields": [
+   [
+    "pos",
+    "pos"
+   ]
+  ],
+  "endpoint": "event/finishgame"
+ },
+ "Event02ModelApiManager.BackgroundRetryEventFinishgame": {
+  "class": "Event02ModelApiManager",
+  "args": "int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRanksCount, int unitId, int leaderPosition, int[] cardIds, int[][] equipmentIds",
+  "calls": [
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "pos",
+    "pos"
+   ]
+  ],
+  "strs": [
+   "url",
+   "equipment_ids[",
+   "total_score",
+   "][",
+   "full_combo",
+   "TOKEN",
+   "background/retry/event_finishgame",
+   "friend_id",
+   "max_combo",
+   "card_ids[",
+   "pos",
+   "]",
+   "hit_ranks_counts",
+   "0",
+   "unit_id",
+   "url",
+   "background/retry/event_finishgame",
+   "TOKEN",
+   "friend_id",
+   "0",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "unit_id",
+   "hit_ranks_counts",
+   "pos",
+   "]",
+   "card_ids[",
+   "equipment_ids[",
+   "]["
+  ],
+  "fields": [
+   "unit_id",
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "pos",
+    "pos"
+   ]
+  ],
+  "endpoint": null
+ },
+ "Event02ModelApiManager.EventGameover": {
+  "class": "Event02ModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "event/gameover",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "event/gameover",
+   "url",
+   "event/gameover",
+   "TOKEN"
+  ],
+  "fields": [],
+  "endpoint": "event/gameover"
+ },
+ "EventBattleModelApiManager.EventBattleFinish": {
+  "class": "EventBattleModelApiManager",
+  "args": "bool win, int[] remainingLife",
+  "calls": [
+   [
+    "header",
+    "]",
+    null
+   ],
+   [
+    "data",
+    "]",
+    "]"
+   ],
+   [
+    "data",
+    "]",
+    "]"
+   ]
+  ],
+  "strs": [
+   "url",
+   "win",
+   "TOKEN",
+   "event/battle_finish",
+   "remaining_life[",
+   "]",
+   "url",
+   "event/battle_finish",
+   "TOKEN",
+   "win",
+   "remaining_life[",
+   "]"
+  ],
+  "fields": [],
+  "endpoint": "event/battle_finish"
+ },
+ "FriendModelApiManager.FriendFollow": {
+  "class": "FriendModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "friend/follow",
+    null
+   ],
+   [
+    "data",
+    "friend/follow",
+    "friend/follow"
+   ]
+  ],
+  "strs": [
+   "url",
+   "user_id",
+   "TOKEN",
+   "friend/follow",
+   "url",
+   "friend/follow",
+   "TOKEN",
+   "user_id"
+  ],
+  "fields": [],
+  "endpoint": "friend/follow"
+ },
+ "FriendModelApiManager.FriendUnfollow": {
+  "class": "FriendModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "friend/unfollow",
+    null
+   ],
+   [
+    "data",
+    "friend/unfollow",
+    "friend/unfollow"
+   ]
+  ],
+  "strs": [
+   "url",
+   "user_id",
+   "TOKEN",
+   "friend/unfollow",
+   "url",
+   "friend/unfollow",
+   "TOKEN",
+   "user_id"
+  ],
+  "fields": [],
+  "endpoint": "friend/unfollow"
+ },
+ "FriendModelApiManager.FriendUnfollower": {
+  "class": "FriendModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "friend/unfollower",
+    null
+   ],
+   [
+    "data",
+    "friend/unfollower",
+    "friend/unfollower"
+   ]
+  ],
+  "strs": [
+   "url",
+   "user_id",
+   "TOKEN",
+   "friend/unfollower",
+   "url",
+   "friend/unfollower",
+   "TOKEN",
+   "user_id"
+  ],
+  "fields": [],
+  "endpoint": "friend/unfollower"
+ },
+ "GachaPlayerModelApiManager.GachaPlay": {
+  "class": "GachaPlayerModelApiManager",
+  "args": "int gachaDetailId",
+  "calls": [
+   [
+    "header",
+    "id",
+    null
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "gacha/play",
+   "TOKEN",
+   "id",
+   "url",
+   "gacha/play",
+   "TOKEN",
+   "id"
+  ],
+  "fields": [],
+  "endpoint": "gacha/play"
+ },
+ "HomeInfoModelApiManager.HomeInfo": {
+  "class": "HomeInfoModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ]
+  ],
+  "strs": [
+   "account/info",
+   "url",
+   "TOKEN",
+   "url",
+   "account/info",
+   "TOKEN"
+  ],
+  "fields": [],
+  "endpoint": "account/info"
+ },
+ "LiveStageModelApiManager.LivestagePlaygame": {
+  "class": "LiveStageModelApiManager",
+  "args": "int movieId, int useEventTicket, int expItem, int friendlyItem, int coinItem, int dropItem",
+  "calls": [
+   [
+    "header",
+    "event_bonus_item_num",
+    null
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ]
+  ],
+  "strs": [
+   "url",
+   "coin_bonus_item_num",
+   "effect",
+   "TOKEN",
+   "exp_bonus_item_num",
+   "stage_id",
+   "movie_id",
+   "drop_bonus_item_num",
+   "friendly_bonus_item_num",
+   "livestage/playgame",
+   "1",
+   "event_bonus_item_num",
+   "url",
+   "livestage/playgame",
+   "TOKEN",
+   "stage_id",
+   "movie_id",
+   "effect",
+   "1",
+   "event_bonus_item_num",
+   "exp_bonus_item_num",
+   "friendly_bonus_item_num",
+   "coin_bonus_item_num",
+   "drop_bonus_item_num"
+  ],
+  "fields": [
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ]
+  ],
+  "endpoint": "livestage/playgame"
+ },
+ "LiveStageModelApiManager.LivestageRetrygame": {
+  "class": "LiveStageModelApiManager",
+  "args": "int movieId, int useEventTicket, int expItem, int friendlyItem, int coinItem, int dropItem",
+  "calls": [
+   [
+    "header",
+    "event_bonus_item_num",
+    null
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "data",
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ]
+  ],
+  "strs": [
+   "url",
+   "coin_bonus_item_num",
+   "effect",
+   "livestage/retrygame",
+   "TOKEN",
+   "exp_bonus_item_num",
+   "stage_id",
+   "movie_id",
+   "drop_bonus_item_num",
+   "friendly_bonus_item_num",
+   "1",
+   "event_bonus_item_num",
+   "url",
+   "livestage/retrygame",
+   "TOKEN",
+   "stage_id",
+   "movie_id",
+   "effect",
+   "1",
+   "event_bonus_item_num",
+   "exp_bonus_item_num",
+   "friendly_bonus_item_num",
+   "coin_bonus_item_num",
+   "drop_bonus_item_num"
+  ],
+  "fields": [
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ],
+   [
+    "event_bonus_item_num",
+    "event_bonus_item_num"
+   ]
+  ],
+  "endpoint": "livestage/retrygame"
+ },
+ "LiveStageModelApiManager.LivestageStonecontinue": {
+  "class": "LiveStageModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "livestage/stonecontinue",
+    null
+   ],
+   [
+    "header",
+    "livestage/adscontinue",
+    null
+   ],
+   [
+    "header",
+    "livestage/gameover",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "livestage/stonecontinue",
+   "url",
+   "livestage/stonecontinue",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "livestage/adscontinue",
+   "url",
+   "livestage/adscontinue",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "livestage/gameover",
+   "url",
+   "livestage/gameover",
+   "TOKEN",
+   "url",
+   "total_score",
+   "full_combo"
+  ],
+  "fields": [],
+  "endpoint": "livestage/gameover"
+ },
+ "LiveStageModelApiManager.LivestageAdscontinue": {
+  "class": "LiveStageModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "livestage/adscontinue",
+    null
+   ],
+   [
+    "header",
+    "livestage/gameover",
+    null
+   ],
+   [
+    "header",
+    "unit_id",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "livestage/adscontinue",
+   "url",
+   "livestage/adscontinue",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "livestage/gameover",
+   "url",
+   "livestage/gameover",
+   "TOKEN",
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "livestage/finishgame",
+   "hit_ranks_counts",
+   "play_log",
+   "unit_id",
+   "url",
+   "livestage/finishgame",
+   "TOKEN",
+   "unit_id",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo"
+  ],
+  "fields": [],
+  "endpoint": "livestage/finishgame"
+ },
+ "LiveStageModelApiManager.LivestageGameover": {
+  "class": "LiveStageModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "livestage/gameover",
+    null
+   ],
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "data",
+    "unit_id",
+    "livestage/gameover"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "livestage/gameover",
+   "url",
+   "livestage/gameover",
+   "TOKEN",
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "livestage/finishgame",
+   "hit_ranks_counts",
+   "play_log",
+   "unit_id",
+   "url",
+   "livestage/finishgame",
+   "TOKEN",
+   "unit_id",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "hit_ranks_counts",
+   "play_log"
+  ],
+  "fields": [
+   [
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "unit_id",
+    "livestage/gameover"
+   ],
+   [
+    "unit_id",
+    "livestage/gameover"
+   ]
+  ],
+  "endpoint": "livestage/finishgame"
+ },
+ "LiveStageModelApiManager.LivestageFinishgame": {
+  "class": "LiveStageModelApiManager",
+  "args": "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRankCount, PlayLog[] playLogs",
+  "calls": [
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "livestage/finishgame",
+   "hit_ranks_counts",
+   "play_log",
+   "unit_id",
+   "url",
+   "livestage/finishgame",
+   "TOKEN",
+   "unit_id",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "hit_ranks_counts",
+   "play_log"
+  ],
+  "fields": [
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "endpoint": "livestage/finishgame"
+ },
+ "LiveStageModelApiManager.LivestageFinishpractice": {
+  "class": "LiveStageModelApiManager",
+  "args": "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int life, int[] hitRankCount, PlayLog[] playLogs",
+  "calls": [
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "livestage/finishpractice",
+   "hit_ranks_counts",
+   "life",
+   "play_log",
+   "unit_id",
+   "url",
+   "livestage/finishpractice",
+   "TOKEN",
+   "unit_id",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "life",
+   "hit_ranks_counts",
+   "play_log"
+  ],
+  "fields": [
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   "unit_id"
+  ],
+  "endpoint": "livestage/finishpractice"
+ },
+ "LiveStageModelApiManager.BackgroundRetryFinishgame": {
+  "class": "LiveStageModelApiManager",
+  "args": "int unitId, int friendId, int totalScore, int fullCombo, int maxCombo, int[] hitRankCount, PlayLog[] playLogs",
+  "calls": [
+   [
+    "header",
+    "unit_id",
+    null
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "data",
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "total_score",
+   "full_combo",
+   "TOKEN",
+   "friend_id",
+   "max_combo",
+   "background/retry/finishgame",
+   "hit_ranks_counts",
+   "play_log",
+   "unit_id",
+   "url",
+   "background/retry/finishgame",
+   "TOKEN",
+   "unit_id",
+   "friend_id",
+   "total_score",
+   "full_combo",
+   "max_combo",
+   "hit_ranks_counts",
+   "play_log"
+  ],
+  "fields": [
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ],
+   [
+    "unit_id",
+    "unit_id"
+   ]
+  ],
+  "endpoint": "background/retry/finishgame"
+ },
+ "PresentBoxModelApiManager.PresentboxGet": {
+  "class": "PresentBoxModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "id",
+    null
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "presentbox/get",
+   "id",
+   "url",
+   "presentbox/get",
+   "TOKEN",
+   "id"
+  ],
+  "fields": [],
+  "endpoint": "presentbox/get"
+ },
+ "ShopModelApiManager.ShopReceiptcheck2": {
+  "class": "ShopModelApiManager",
+  "args": "int price, string receipt, int masterId",
+  "calls": [
+   [
+    "header",
+    "id",
+    null
+   ],
+   [
+    "data",
+    "id",
+    null
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "price",
+   "receipt",
+   "TOKEN",
+   "shop/receiptcheckandroid2",
+   "id",
+   "url",
+   "shop/receiptcheckandroid2",
+   "TOKEN",
+   "receipt",
+   "price",
+   "id"
+  ],
+  "fields": [],
+  "endpoint": "shop/receiptcheckandroid2"
+ },
+ "ShopModelApiManager.ShopBuy": {
+  "class": "ShopModelApiManager",
+  "args": "int pack_id",
+  "calls": [
+   [
+    "header",
+    "pack_id",
+    null
+   ],
+   [
+    "data",
+    "pack_id",
+    "pack_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "shop/buy",
+   "pack_id",
+   "url",
+   "shop/buy",
+   "TOKEN",
+   "pack_id"
+  ],
+  "fields": [
+   [
+    "pack_id",
+    "pack_id"
+   ]
+  ],
+  "endpoint": "shop/buy"
+ },
+ "ShopModelApiManager.ShopPurchaseList": {
+  "class": "ShopModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "TOKEN",
+    null
+   ],
+   [
+    "header",
+    "movie_id",
+    null
+   ],
+   [
+    "data",
+    "movie_id",
+    "TOKEN"
+   ]
+  ],
+  "strs": [
+   "shop/purchaselist",
+   "url",
+   "TOKEN",
+   "url",
+   "shop/purchaselist",
+   "TOKEN",
+   "url",
+   "TOKEN",
+   "shop/buy_movie",
+   "movie_id",
+   "url",
+   "shop/buy_movie",
+   "TOKEN",
+   "movie_id"
+  ],
+  "fields": [
+   [
+    "movie_id",
+    "TOKEN"
+   ]
+  ],
+  "endpoint": "shop/buy_movie"
+ },
+ "ShopModelApiManager.ShopExchangeList": {
+  "class": "ShopModelApiManager",
+  "args": "",
+  "calls": [
+   [
+    "header",
+    "shop/exchange_list",
+    null
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "shop/exchange_list",
+   "url",
+   "shop/exchange_list",
+   "TOKEN"
+  ],
+  "fields": [],
+  "endpoint": "shop/exchange_list"
+ },
+ "ShopModelApiManager.ShopExchange": {
+  "class": "ShopModelApiManager",
+  "args": "int id, int num",
+  "calls": [
+   [
+    "header",
+    "id",
+    null
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ],
+   [
+    "data",
+    "id",
+    "id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "shop/exchange",
+   "num",
+   "TOKEN",
+   "id",
+   "url",
+   "shop/exchange",
+   "TOKEN",
+   "id",
+   "num"
+  ],
+  "fields": [],
+  "endpoint": "shop/exchange"
+ },
+ "ShopModelApiManager.ShopBuyMovie": {
+  "class": "ShopModelApiManager",
+  "args": "int movieId",
+  "calls": [
+   [
+    "header",
+    "movie_id",
+    null
+   ],
+   [
+    "data",
+    "movie_id",
+    "movie_id"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "shop/buy_movie",
+   "movie_id",
+   "url",
+   "shop/buy_movie",
+   "TOKEN",
+   "movie_id"
+  ],
+  "fields": [
+   [
+    "movie_id",
+    "movie_id"
+   ]
+  ],
+  "endpoint": "shop/buy_movie"
+ },
+ "ShopModelApiManager.ShopBuyMusic": {
+  "class": "ShopModelApiManager",
+  "args": "int musicId",
+  "calls": [
+   [
+    "header",
+    "shop/buy_music",
+    null
+   ],
+   [
+    "data",
+    "shop/buy_music",
+    "shop/buy_music"
+   ]
+  ],
+  "strs": [
+   "url",
+   "music_id",
+   "TOKEN",
+   "shop/buy_music",
+   "url",
+   "shop/buy_music",
+   "TOKEN",
+   "music_id"
+  ],
+  "fields": [],
+  "endpoint": "shop/buy_music"
+ },
+ "StoryModelApiManager.StoryStatus": {
+  "class": "StoryModelApiManager",
+  "args": "int storyId",
+  "calls": [
+   [
+    "header",
+    "story/status",
+    null
+   ],
+   [
+    "data",
+    "story/status",
+    "story/status"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "story_id",
+   "story/status",
+   "url",
+   "story/status",
+   "TOKEN",
+   "story_id"
+  ],
+  "fields": [],
+  "endpoint": "story/status"
+ },
+ "StoryModelApiManager.StoryRead": {
+  "class": "StoryModelApiManager",
+  "args": "int storyId",
+  "calls": [
+   [
+    "header",
+    "story/read",
+    null
+   ],
+   [
+    "data",
+    "story/read",
+    "story/read"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "story_id",
+   "story/read",
+   "url",
+   "story/read",
+   "TOKEN",
+   "story_id"
+  ],
+  "fields": [],
+  "endpoint": "story/read"
+ },
+ "StoryModelApiManager.StoryUnlockEvent": {
+  "class": "StoryModelApiManager",
+  "args": "int eventId",
+  "calls": [
+   [
+    "header",
+    "story/unlock_event",
+    null
+   ],
+   [
+    "data",
+    "story/unlock_event",
+    "story/unlock_event"
+   ]
+  ],
+  "strs": [
+   "url",
+   "TOKEN",
+   "event_id",
+   "story/unlock_event",
+   "url",
+   "story/unlock_event",
+   "TOKEN",
+   "event_id"
+  ],
+  "fields": [],
+  "endpoint": "story/unlock_event"
+ },
+ "Test001ModelApiManager.Execute": {
+  "class": "Test001ModelApiManager",
+  "args": "int cnt",
+  "calls": [
+   [
+    "data_dict",
+    "name",
+    "name"
+   ]
+  ],
+  "strs": [
+   "id",
+   "name",
+   "id",
+   "name"
+  ],
+  "fields": [
+   [
+    "name",
+    "name"
+   ]
+  ],
+  "endpoint": null
+ }
+}

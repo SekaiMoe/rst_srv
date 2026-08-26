@@ -83,8 +83,13 @@ func (s *Server) cardAcce(c *gin.Context) {
 // acceGrow — 饰品强化 (复用卡牌强化: kind=2 曲线同 R1..R5)
 func (s *Server) acceGrow(c *gin.Context) { s.cardGrow(c) }
 
-// acceLock — 饰品锁定
-func (s *Server) acceLock(c *gin.Context) { s.cardLock(c) }
+// acceLock — 饰品锁定 (客户端发送 acce_id, REQUEST_FIELDS.md)
+func (s *Server) acceLock(c *gin.Context) {
+	if c.PostForm("acce_id") != "" && c.PostForm("card_id") == "" {
+		c.Request.Form.Set("card_id", c.PostForm("acce_id"))
+	}
+	s.cardLock(c)
+}
 
 // acceSell — 饰品出售
 func (s *Server) acceSell(c *gin.Context) { s.cardSell(c) }

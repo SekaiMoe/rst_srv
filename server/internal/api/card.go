@@ -183,7 +183,12 @@ func (s *Server) deckLeader(c *gin.Context) {
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))
+	// 客户端实际发送: deck_id + pos (REQUEST_FIELDS.md); pos=要设为队长的卡实例
+	posID, _ := strconv.Atoi(c.PostForm("pos"))
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
+	if cardID == 0 {
+		cardID = posID
+	}
 	if deckID < 0 || deckID >= len(pl.Decks) {
 		c.JSON(http.StatusOK, gin.H{"code": 404, "message": "deck not found"})
 		return
@@ -204,7 +209,10 @@ func (s *Server) deckCard(c *gin.Context) {
 		return
 	}
 	deckID, _ := strconv.Atoi(c.PostForm("deck_id"))
-	pos, _ := strconv.Atoi(c.PostForm("deck_pos"))
+	pos, _ := strconv.Atoi(c.PostForm("pos")) // 客户端实际字段 (REQUEST_FIELDS.md)
+	if pos == 0 {
+		pos, _ = strconv.Atoi(c.PostForm("deck_pos")) // 兼容
+	}
 	cardID, _ := strconv.Atoi(c.PostForm("card_id"))
 	if deckID < 0 || deckID >= len(pl.Decks) {
 		c.JSON(http.StatusOK, gin.H{"code": 404, "message": "deck not found"})
