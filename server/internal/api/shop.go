@@ -61,7 +61,9 @@ func (s *Server) shopItemlist(c *gin.Context) {
 func (s *Server) shopPurchaselist(c *gin.Context) { s.shopItemlist(c) }
 
 // shopBuy — 购买
-func (s *Server) shopBuy(c *gin.Context) {
+func (s *Server) shopBuy(c *gin.Context) { s.shopBuyWithExtra(c, "") }
+
+func (s *Server) shopBuyWithExtra(c *gin.Context, extraKey string) {
 	pl := s.playerOf(c)
 	if pl == nil {
 		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
@@ -102,21 +104,37 @@ func (s *Server) shopBuy(c *gin.Context) {
 	}
 	_ = s.Players.Save(pl)
 	log.Printf("[shop] uuid=%s pack=%d price=%d paid=%v 获得%d项", pl.UUID, packID, price, isPaid, len(granted))
-	// ResponseShopBuy: point_purchased, point_free
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
+	// ResponseShopBuy: point_purchased, point_free (+music_id/movie_id 变体)
+	resp := gin.H{"code": 200, "message": "ok",
 		"shop_item_pack_id": packID, "granted": granted,
-		"point_purchased": 0, "point_free": pl.Jewel, "money": pl.Coin})
+		"point_purchased": 0, "point_free": pl.Jewel, "money": pl.Coin}
+	if extraKey != "" {
+		if v := c.PostForm(extraKey); v != "" {
+			resp[extraKey], _ = strconv.Atoi(v)
+		}
+	}
+	c.JSON(http.StatusOK, resp)
 }
 
-func (s *Server) shopBuyMusic(c *gin.Context) { s.shopBuy(c) }
-func (s *Server) shopBuyMovie(c *gin.Context) { s.shopBuy(c) }
+// ResponseShopBuyMusic: +music_id; ResponseShopBuyMovie: +movie_id
+func (s *Server) shopBuyMusic(c *gin.Context) { s.shopBuyWithExtra(c, "music_id") }
+
+func (s *Server) shopBuyMovie(c *gin.Context) { s.shopBuyWithExtra(c, "movie_id") }
 func (s *Server) shopLog(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "logs": []string{}})
 }
 
 // shopReceiptcheck — 氪金收据校验 (纪念服: 直接通过)
+// ResponseShopReceipt: purchase_price_month, point_purchased, point_free
 func (s *Server) shopReceiptcheck(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "valid": true})
+	pl := s.playerOf(c)
+	body := gin.H{"code": 200, "message": "ok", "valid": true, "status": 1}
+	if pl != nil {
+		body["purchase_price_month"] = 0
+		body["point_purchased"] = 0
+		body["point_free"] = pl.Jewel
+	}
+	c.JSON(http.StatusOK, body)
 }
 
 // repayment/create — 停服退款 (纪念服: 记录后返回受理)

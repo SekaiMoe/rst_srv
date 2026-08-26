@@ -88,7 +88,7 @@ func (s *Server) voteDecision(c *gin.Context) {
 	pl.Items[vk]++
 	_ = s.Players.Save(pl)
 	log.Printf("[vote] uuid=%s item=%d (%s) 票券=%d", pl.UUID, itemID, rowStr(item, "name"), usedTicket)
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
 		"vote_item_id": itemID, "name": rowStr(item, "name"),
 		"local_count": pl.Items[vk], "used_ticket": usedTicket})
 }
@@ -216,8 +216,11 @@ func (s *Server) eventBattleFinish(c *gin.Context) {
 		}
 		_ = s.Players.Save(pl)
 	}
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
+	// ResponseEventBattleFinish: rewards, eventRewards
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
 		"win": win, "score": score, "event_point_gained": gain,
+		"rewards": []gin.H{}, "eventRewards": []gin.H{},
+		"eventPoint":  pl.EventPoints[eventID],
 		"event_point": map[int]int{eventID: pl.EventPoints[eventID]}})
 }
 

@@ -194,10 +194,8 @@ func (s *Server) livestageFinishgame(c *gin.Context) {
 	body["best_score"] = bs.Score
 	body["best_rank"] = bs.Rank
 	body["rewards"] = rewards
-	if eventID > 0 {
-		body["eventPoint"] = pl.EventPoints[eventID]
-		body["eventRewards"] = []gin.H{}
-	}
+	body["eventPoint"] = pl.EventPoints[eventID] // 无活动时为 0
+	body["eventRewards"] = []gin.H{}
 	c.JSON(http.StatusOK, body)
 }
 

@@ -1,18 +1,81 @@
 {
-  "uuid": "field-test-002",
+  "uuid": "audit-test-001",
   "name": "プリズムステップ",
-  "created_at": "2026-08-26T21:16:56.022502957+08:00",
-  "jewel": 144390,
-  "coin": 1010900,
-  "friend_point": 10000,
-  "level": 11,
-  "exp": 1310,
+  "created_at": "2026-08-26T21:24:52.551130848+08:00",
+  "jewel": 143530,
+  "coin": 1010000,
+  "friend_point": 10010,
+  "level": 20,
+  "exp": 3900,
   "ap": 100,
   "ap_max": 100,
   "cards": [
     {
       "id": 1,
       "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 2,
+      "master_id": 2204,
+      "level": 14,
+      "exp": 2500,
+      "lock": 0
+    },
+    {
+      "id": 4,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 5,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 6,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 7,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 8,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 9,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 10,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 11,
+      "master_id": 2210,
       "level": 1,
       "exp": 0,
       "lock": 0
@@ -27,8 +90,7 @@
   ],
   "items": {
     "2": 650,
-    "204": 5,
-    "901": 50,
+    "204": 45,
     "achieve_11818": 1,
     "achieve_11819": 1,
     "achieve_11820": 1,
@@ -198,6 +260,20 @@
     "achieve_12024": 1,
     "achieve_12025": 1,
     "achieve_12026": 1,
+    "achieve_12123": 1,
+    "achieve_12130": 1,
+    "achieve_12137": 1,
+    "achieve_12144": 1,
+    "achieve_12151": 1,
+    "achieve_12158": 1,
+    "achieve_12165": 1,
+    "achieve_12172": 1,
+    "achieve_12179": 1,
+    "achieve_12186": 1,
+    "achieve_12193": 1,
+    "achieve_12200": 1,
+    "achieve_12207": 1,
+    "achieve_12214": 1,
     "achieve_12268": 1,
     "achieve_12269": 1,
     "achieve_12270": 1,
@@ -284,6 +360,23 @@
     "achieve_12351": 1,
     "achieve_12352": 1,
     "achieve_12353": 1,
+    "achieve_12372": 1,
+    "achieve_12379": 1,
+    "achieve_12386": 1,
+    "achieve_12393": 1,
+    "achieve_12400": 1,
+    "achieve_12407": 1,
+    "achieve_12414": 1,
+    "achieve_12421": 1,
+    "achieve_12428": 1,
+    "achieve_12435": 1,
+    "achieve_12442": 1,
+    "achieve_12449": 1,
+    "achieve_12456": 1,
+    "achieve_12463": 1,
+    "achieve_12470": 1,
+    "achieve_12477": 1,
+    "achieve_12484": 1,
     "achieve_12538": 1,
     "achieve_12539": 1,
     "achieve_12540": 1,
@@ -2235,6 +2328,8 @@
     "achieve_15737": 1,
     "achieve_15738": 1,
     "achieve_15739": 1,
+    "achieve_16259": 1,
+    "achieve_16278": 1,
     "achieve_16315": 1,
     "achieve_16316": 1,
     "achieve_16317": 1,
@@ -4284,16 +4379,21 @@
     "achieve_18440": 1,
     "achieve_18441": 1,
     "achieve_18442": 1,
-    "achieve_18443": 1
+    "achieve_18443": 1,
+    "friend_1": 1,
+    "handover_code": 0,
+    "present_901": 30
   },
-  "gacha_free": {},
+  "gacha_free": {
+    "handover": "54a1a47e2e14b5aa4f4ac50d"
+  },
   "best_scores": {
     "1": {
       "score": 130000,
       "max_combo": 80,
-      "full_combo": 1,
+      "full_combo": 0,
       "rank": 4,
-      "plays": 1,
+      "plays": 3,
       "got": [
         true,
         true,
@@ -4310,11 +4410,11 @@
       ]
     }
   },
-  "read_stories": {
-    "1": true
+  "read_stories": {},
+  "event_points": {
+    "284": 148
   },
-  "event_points": {},
-  "ap_updated_at": "2026-08-26T21:16:56.123927957+08:00",
+  "ap_updated_at": "2026-08-26T21:30:04.658828802+08:00",
   "profile_text": "",
   "title_id": 0,
   "favorite_card_id": 0,

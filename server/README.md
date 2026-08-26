@@ -138,6 +138,14 @@ python3 patch_client_url.py global-metadata.dat --url http://192.168.1.55/
 因此 **mirror/ 的 CDN 服务就是 masterdata 下发端点**，版本一致性由 login3rd 的
 `assetbundle_version` 字段 + 镜像文件本身保证。`/debug/masterdata` 仅供调试/工具使用。
 
+## 字段对齐审计 (2026-08-26 最终)
+
+27 组端点字段全量自动审计 **27/27 通过** (login3rd 全 UserModel 字段、
+FriendModel/PresentBoxModel 内嵌结构、handover_code、receiptcheck、
+buy_music/movie、battle_finish、finishgame eventPoint 等全部按客户端 DTO 对齐)。
+附加发现: 认证头字段名为 `TOKEN` (反汇编确认), 已支持 表单 token + 头 TOKEN 双通道。
+明细见 docs/RESPONSE_FIELDS.md。
+
 ## 后续开发路线
 
 - [x] ~~全部 104 端点实现完毕 (2026-08-26)~~

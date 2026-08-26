@@ -77,11 +77,12 @@ func (s *Server) storyStatus(c *gin.Context) {
 			unlocked = append(unlocked, sid)
 		}
 	}
+	// ResponseStoryStatus: status
 	c.JSON(http.StatusOK, gin.H{
-		"code": 200, "message": "ok",
+		"code": 200, "message": "ok", "status": 1,
 		"read": read, "read_count": len(read),
 		"unlocked": unlocked, "locked_by_lv": lockedByLv,
-		"level": pl.Level,
+		"lv": pl.Level,
 	})
 }
 
@@ -134,8 +135,9 @@ func (s *Server) storyRead(c *gin.Context) {
 }
 
 // storyUnlockEvent — 活动剧情解锁 (纪念服: 直接成功)
+// ResponseStoryUnlockEvent: status
 func (s *Server) storyUnlockEvent(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "unlocked": true})
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1, "unlocked": true})
 }
 
 // loginbonusGet — 登录奖励 (纪念服: 每日领取 50 石)

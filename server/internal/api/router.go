@@ -52,8 +52,8 @@ func RegisterRoutes(r *gin.Engine, dataDir, masterdataPath string) {
 	r.POST("/account/delete", s.requireAuth, s.accountDelete)
 	r.POST("/account/delete_info", s.requireAuth, s.ok)
 	r.POST("/account/handover", s.requireAuth, s.ok)
-	r.POST("/account/handover_code", s.requireAuth, s.ok)
-	r.POST("/account/handover_new_code", s.requireAuth, s.ok)
+	r.POST("/account/handover_code", s.requireAuth, s.accountHandoverCode)
+	r.POST("/account/handover_new_code", s.requireAuth, s.accountHandoverCode)
 
 	// ===== 抽卡 (真实实现, 见 gacha.go) =====
 	r.POST("/gacha/list", s.requireAuth, s.gachaList)
@@ -207,6 +207,9 @@ func RegisterRoutes(r *gin.Engine, dataDir, masterdataPath string) {
 func (s *Server) requireAuth(c *gin.Context) {
 	uuid := c.GetHeader("UUID")
 	token := c.PostForm("token")
+	if token == "" {
+		token = c.GetHeader("TOKEN") // 客户端反汇编确认: 头字段名为 TOKEN
+	}
 	if uuid == "" && token == "" {
 		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "unauthorized"})
 		c.Abort()

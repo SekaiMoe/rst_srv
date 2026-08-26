@@ -1,0 +1,104 @@
+{
+  "uuid": "final-audit-002",
+  "name": "プリズムステップ",
+  "created_at": "2026-08-26T21:31:54.067923292+08:00",
+  "jewel": 97500,
+  "coin": 1002500,
+  "friend_point": 10000,
+  "level": 0,
+  "exp": 0,
+  "ap": 100,
+  "ap_max": 100,
+  "cards": [
+    {
+      "id": 1,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 2,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 3,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 5,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 6,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 7,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 8,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 9,
+      "master_id": 2198,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 10,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    }
+  ],
+  "decks": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "items": {
+    "vote_1": 1
+  },
+  "gacha_free": {},
+  "best_scores": {},
+  "read_stories": {},
+  "event_points": {},
+  "ap_updated_at": "2026-08-26T21:31:54.067923865+08:00",
+  "profile_text": "",
+  "title_id": 0,
+  "favorite_card_id": 0,
+  "publish_card_id": 0,
+  "acce_slots": {},
+  "deck_names": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ]
+}

@@ -1,6 +1,8 @@
 package api
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"log"
 	"net/http"
 
@@ -98,6 +100,11 @@ func (s *Server) login3rd(c *gin.Context) {
 	}
 	body["cardEquipments"] = equips
 	body["gachaConsumptionItems"] = []gin.H{}
+	// ResponseHomeInfo: achieve_num, present_num, friend_pt, total_friend_pt
+	body["achieve_num"] = 0
+	body["present_num"] = s.presentCount(pl)
+	body["friend_pt"] = pl.FriendPoint
+	body["total_friend_pt"] = pl.FriendPoint
 	// 资源版本: 客户端据此决定增量下载 (本地不校验)
 	body["assetbundle_version"] = 2
 	body["cri_audio_version"] = 2
@@ -153,4 +160,33 @@ func (s *Server) accountDelete(c *gin.Context) {
 	uuid, _ := c.Get("uuid")
 	log.Printf("[delete] uuid=%v", uuid)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "deleted"})
+}
+
+// accountHandoverCode — 生成继承码
+// ResponseAccountHandoverCode: handover_code
+func (s *Server) accountHandoverCode(c *gin.Context) {
+	pl := s.playerOf(c)
+	if pl == nil {
+		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
+		return
+	}
+	b := make([]byte, 12)
+	rand.Read(b)
+	code := hex.EncodeToString(b)
+	pl.Items["handover_code"] = 0 // 标记
+	pl.GachaFree["handover"] = code
+	_ = s.Players.Save(pl)
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
+		"handover_code": code, "status": 1})
+}
+
+// presentCount — 待领取礼物数
+func (s *Server) presentCount(pl *Player) int {
+	n := 0
+	for k, v := range pl.Items {
+		if len(k) > 8 && k[:8] == "present_" && v > 0 {
+			n++
+		}
+	}
+	return n
 }

@@ -3,7 +3,6 @@ package api
 import (
 	"log"
 	"net/http"
-	"sort"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -49,8 +48,11 @@ func (s *Server) friendFollow(c *gin.Context) {
 			break
 		}
 	}
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
-		"friend_id": friendID, "name": name, "friend_point": pl.FriendPoint})
+	// ResponseFollowFollower: status + 钱包
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
+		"friend_id": friendID, "name": name,
+		"is_follow": 1, "is_follower": 1,
+		"friend_pt": pl.FriendPoint, "total_friend_pt": pl.FriendPoint})
 }
 
 func (s *Server) friendUnfollow(c *gin.Context) {
@@ -91,14 +93,35 @@ func (s *Server) charList(c *gin.Context, pl *Player, followingOnly bool) {
 	for _, r := range s.Master["unit"] {
 		unitName[rowInt(r, "id")] = rowStr(r, "name")
 	}
+	// FriendModel: id,user_id,name,card_id,lv,title_id,life,power1..3,unit_power,skill_id,profile,is_follow,is_follower
 	type fr struct {
-		ID       int    `json:"friend_id"`
-		Name     string `json:"name"`
-		UnitID   int    `json:"unit_id"`
-		Unit     string `json:"unit_name"`
-		CV       string `json:"cv"`
-		Color    string `json:"image_color"`
-		Followed bool   `json:"followed"`
+		ID         int    `json:"id"`
+		UserID     string `json:"user_id"`
+		Name       string `json:"name"`
+		CardID     int    `json:"card_id"`
+		Lv         int    `json:"lv"`
+		TitleID    int    `json:"title_id"`
+		Life       int    `json:"life"`
+		Power1     int    `json:"power1"`
+		Power2     int    `json:"power2"`
+		Power3     int    `json:"power3"`
+		UnitPower  int    `json:"unit_power"`
+		SkillID    int    `json:"skill_id"`
+		Profile    string `json:"profile"`
+		IsFollow   int    `json:"is_follow"`
+		IsFollower int    `json:"is_follower"`
+		UnitID     int    `json:"unit_id"`
+		UnitName   string `json:"unit_name"`
+	}
+	// 每角色的代表卡 (masterdata 最强卡) 供展示
+	bestCard := map[int]int{}
+	cardLv := map[int]int{}
+	for _, c := range s.Master["card"] {
+		cid := rowInt(c, "character_id")
+		if rowInt(c, "rarity") >= cardLv[cid] {
+			cardLv[cid] = rowInt(c, "rarity")
+			bestCard[cid] = rowInt(c, "id")
+		}
 	}
 	out := []fr{}
 	for _, r := range s.Master["character"] {
@@ -108,11 +131,28 @@ func (s *Server) charList(c *gin.Context, pl *Player, followingOnly bool) {
 		if followingOnly && !followed {
 			continue
 		}
-		out = append(out, fr{
-			ID: id, Name: rowStr(r, "name"),
-			UnitID: rowInt(r, "unit_id"), Unit: unitName[rowInt(r, "unit_id")],
-			CV: rowStr(r, "cv"), Color: rowStr(r, "image_color"), Followed: followed,
-		})
+		bc := bestCard[id]
+		var m map[string]interface{}
+		for _, c := range s.Master["card"] {
+			if rowInt(c, "id") == bc {
+				m = c
+				break
+			}
+		}
+		f := fr{
+			ID: id, UserID: "npc-" + strconv.Itoa(id), Name: rowStr(r, "name"),
+			CardID: bc, Lv: 99, Life: 99,
+			UnitID: rowInt(r, "unit_id"), UnitName: unitName[rowInt(r, "unit_id")],
+			Profile:  rowStr(r, "description"),
+			IsFollow: boolInt(followed), IsFollower: 1,
+		}
+		if m != nil {
+			f.Power1 = rowInt(m, "power1_max")
+			f.Power2 = rowInt(m, "power2_max")
+			f.Power3 = rowInt(m, "power3_max")
+			f.UnitPower = f.Power1 + f.Power2 + f.Power3
+		}
+		out = append(out, f)
 	}
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
 		"friends": out, "count": len(out), "follow_limit": 100})
@@ -176,26 +216,33 @@ func (s *Server) presentboxList(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"code": 401, "message": "player not found"})
 		return
 	}
+	// PresentBoxModel: id,item_kind,item_id,item_num,created_at,deadline,message
 	presents := []gin.H{}
-	itemName := map[int]string{}
-	for _, r := range s.Master["item"] {
-		itemName[rowInt(r, "id")] = rowStr(r, "name")
-	}
 	idx := 0
 	for key, n := range pl.Items {
 		if len(key) > 8 && key[:8] == "present_" {
 			itemID, _ := strconv.Atoi(key[8:])
 			idx++
+			kind := 0
+			var m map[string]interface{}
+			for _, r := range s.Master["item"] {
+				if rowInt(r, "id") == itemID {
+					m = r
+					break
+				}
+			}
+			if m != nil {
+				kind = rowInt(m, "kind_id")
+			}
 			presents = append(presents, gin.H{
-				"present_id": idx, "item_id": itemID,
-				"name": itemName[itemID], "num": n,
+				"id": idx, "item_kind": kind, "item_id": itemID, "item_num": n,
+				"created_at": pl.CreatedAt.Format("2006-01-02 15:04:05"),
+				"deadline":   "2030-12-31 23:59:59",
+				"message":    "運営からのプレゼントです",
 			})
 		}
 	}
-	sort.Slice(presents, func(i, j int) bool {
-		return presents[i]["present_id"].(int) < presents[j]["present_id"].(int)
-	})
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
 		"presents": presents, "count": len(presents)})
 }
 

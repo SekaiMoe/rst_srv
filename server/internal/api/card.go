@@ -171,7 +171,8 @@ func (s *Server) cardSell(c *gin.Context) {
 	pl.Cards = kept
 	pl.Coin += gain
 	_ = s.Players.Save(pl)
-	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "sold": sold, "gain_coin": gain, "coin": pl.Coin})
+	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "status": 1,
+		"sold": sold, "gain_coin": gain, "coin": pl.Coin, "money": pl.Coin})
 }
 
 // deck/leader — 编成队长
