@@ -75,23 +75,31 @@ type Player struct {
 	Exp         int               `json:"exp"`
 	Ap          int               `json:"ap"`
 	ApMax       int               `json:"ap_max"`
-	Cards       []Card            `json:"cards"`      // 卡实例列表
-	Decks       [][]int           `json:"decks"`      // 每编成位的卡实例 id
-	Items       map[string]int    `json:"items"`      // 道具 (item_id -> num), 901=无偿石 902=有偿石
-	GachaFree   map[string]string `json:"gacha_free"` // gacha_id -> 最后免费日 (YYYY-MM-DD)
-	BestScores  map[int]BestScore `json:"best_scores"`  // stage_id -> 最佳成绩
-	ReadStories map[int]bool     `json:"read_stories"` // story_id -> 已读
-	EventPoints map[int]int      `json:"event_points"` // event_id -> pt
-	ApUpdatedAt time.Time        `json:"ap_updated_at"` // 体力回复基准
+	Cards       []Card            `json:"cards"`         // 卡实例列表
+	Decks       [][]int           `json:"decks"`         // 每编成位的卡实例 id
+	Items       map[string]int    `json:"items"`         // 道具 (item_id -> num), 901=无偿石 902=有偿石
+	GachaFree   map[string]string `json:"gacha_free"`    // gacha_id -> 最后免费日 (YYYY-MM-DD)
+	BestScores  map[int]BestScore `json:"best_scores"`   // stage_id -> 最佳成绩
+	ReadStories map[int]bool      `json:"read_stories"`  // story_id -> 已读
+	EventPoints map[int]int       `json:"event_points"`  // event_id -> pt
+	ApUpdatedAt time.Time         `json:"ap_updated_at"` // 体力回复基准
+	// 档案
+	ProfileText    string `json:"profile_text"`
+	TitleID        int    `json:"title_id"`
+	FavoriteCardID int    `json:"favorite_card_id"`
+	PublishCardID  int    `json:"publish_card_id"`
+	// 编成
+	AcceSlots map[int][]int `json:"acce_slots"` // 角色卡实例id -> 饰品实例id列表
+	DeckNames []string      `json:"deck_names"`
 }
 
 // BestScore — 单曲最佳 (S=4 A=3 B=2 C=1 miss=0); 12 梯度奖励首次达成发放
 type BestScore struct {
-	Score     int       `json:"score"`
-	MaxCombo  int       `json:"max_combo"`
-	FullCombo int       `json:"full_combo"`
-	Rank      int       `json:"rank"`
-	Plays     int       `json:"plays"`
+	Score     int      `json:"score"`
+	MaxCombo  int      `json:"max_combo"`
+	FullCombo int      `json:"full_combo"`
+	Rank      int      `json:"rank"`
+	Plays     int      `json:"plays"`
 	Got       [12]bool `json:"got"` // score S/A/B/C, combo S/A/B/C, clear S/A/B/C
 }
 
@@ -150,6 +158,8 @@ func (p *PlayerStore) Create(uuid string) (*Player, error) {
 		BestScores:  map[int]BestScore{},
 		ReadStories: map[int]bool{},
 		EventPoints: map[int]int{},
+		AcceSlots:   map[int][]int{},
+		DeckNames:   make([]string, 5),
 		ApUpdatedAt: time.Now(),
 	}
 	f, err := os.Create(p.path(uuid))

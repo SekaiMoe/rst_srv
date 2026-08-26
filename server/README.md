@@ -50,7 +50,12 @@ go build -o rstserver .
 | `POST /achieve/*` 4 个 | ✅ 完整 | 8732 成就 (演出次数/剧情/卡数判定), 一键领取 |
 | `POST /maker/*` 11 个 | ✅ 完整 | 自制谱上传/列表/下载/游玩/收藏 (data/makers/) |
 | `GET /debug/masterdata` | ✅ | 93 张表查询 (客户端本体走 CDN bundle, 此处供调试) |
-| 其余 28 个端点 | ⚙️ stub | 认证后返回 `{code:200,message:"ok"}` (event/vote/acce 等边缘功能) |
+| `POST /profile/*` 6 个 | ✅ 完整 | 档案: 改名/简介/称号(417项)/最爱卡/公开卡 |
+| `POST /card/acce` `acce/*` 9 个 | ✅ 完整 | 饰品装备(4槽位/占用互斥)/强化/锁定/出售 + 批量编成/改名/解散 |
+| `POST /vote/*` 2 个 | ✅ 完整 | 6 届历史投票重开 (116 选项, 本地计票, 票券自动消耗) |
+| `POST /event/*` 9 个 | ✅ 完整 | 471 活动全开 + Battle 对战 (eventBattle 敌方数值配置下发/结算) + 后台重试结算 |
+
+> **全部 104 个端点已实现, 0 stub** (与 docs/API_DOCUMENTATION.md 完全对齐) |
 
 协议依据: `../LOGIN_FLOW_ANALYSIS.md`（反汇编还原的三段式登录字段）。
 
@@ -126,9 +131,8 @@ python3 patch_client_url.py global-metadata.dat --url http://192.168.1.55/
 
 ## 后续开发路线
 
-- [x] ~~gacha~~ ~~masterdata~~ ~~结算/强化/剧情~~ ~~好友/商店/兑换/礼物/成就/maker~~
-- [ ] 真机联调: 客户端 SetJson 字段校准 (需设备 + HTTPS 方案, 见"接入客户端")
-- [ ] event/* 活动 Battle、vote/* 投票 (数据已有, 等联调确认交互协议)
+- [x] ~~全部 104 端点实现完毕 (2026-08-26)~~
+- [ ] 真机联调: 客户端 SetJson 字段校准 (需设备, 见 ../docs/PATCH_CLIENT_HTTPS.md 明文接入方案)
 - [ ] 按客户端 SetJson 逐端点补全响应字段（抓包验证最快, 需设备）
 
 ## 结构

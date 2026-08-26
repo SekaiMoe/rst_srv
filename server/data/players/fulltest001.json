@@ -1,27 +1,34 @@
 {
-  "uuid": "game-test-001",
-  "name": "プリズムステップ",
-  "created_at": "2026-08-26T20:29:17.799792954+08:00",
-  "jewel": 97320,
-  "coin": 1010900,
+  "uuid": "full-test-001",
+  "name": "プリズムマスター",
+  "created_at": "2026-08-26T21:06:10.179659089+08:00",
+  "jewel": 97500,
+  "coin": 1011000,
   "friend_point": 10000,
   "level": 15,
-  "exp": 2310,
+  "exp": 2300,
   "ap": 100,
   "ap_max": 100,
   "cards": [
     {
       "id": 1,
-      "master_id": 2198,
+      "master_id": 2204,
       "level": 1,
       "exp": 0,
       "lock": 0
     },
     {
       "id": 2,
-      "master_id": 2198,
-      "level": 14,
-      "exp": 2500,
+      "master_id": 2210,
+      "level": 1,
+      "exp": 0,
+      "lock": 0
+    },
+    {
+      "id": 3,
+      "master_id": 2204,
+      "level": 1,
+      "exp": 0,
       "lock": 0
     },
     {
@@ -33,14 +40,14 @@
     },
     {
       "id": 5,
-      "master_id": 2204,
+      "master_id": 2198,
       "level": 1,
       "exp": 0,
       "lock": 0
     },
     {
       "id": 6,
-      "master_id": 2198,
+      "master_id": 2204,
       "level": 1,
       "exp": 0,
       "lock": 0
@@ -61,44 +68,50 @@
     },
     {
       "id": 9,
-      "master_id": 2210,
+      "master_id": 2204,
       "level": 1,
       "exp": 0,
       "lock": 0
     },
     {
       "id": 10,
-      "master_id": 2210,
+      "master_id": 2204,
       "level": 1,
       "exp": 0,
       "lock": 0
     },
     {
-      "id": 11,
-      "master_id": 2204,
+      "id": 999,
+      "master_id": 5001,
       "level": 1,
       "exp": 0,
       "lock": 0
     }
   ],
   "decks": [
-    null,
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
     null,
     null,
     null,
     null
   ],
   "items": {
-    "2": 650
+    "2": 350,
+    "deck_name_0": 0,
+    "vote_1": 1
   },
-  "gacha_free": {
-    "loginbonus": "2026-08-26"
-  },
+  "gacha_free": {},
   "best_scores": {
     "1": {
-      "score": 130000,
-      "max_combo": 80,
-      "full_combo": 1,
+      "score": 120000,
+      "max_combo": 70,
+      "full_combo": 0,
       "rank": 4,
       "plays": 2,
       "got": [
@@ -106,7 +119,7 @@
         true,
         true,
         true,
-        true,
+        false,
         true,
         true,
         true,
@@ -117,9 +130,25 @@
       ]
     }
   },
-  "read_stories": {
-    "1": true
+  "read_stories": {},
+  "event_points": {
+    "284": 135
   },
-  "event_points": {},
-  "ap_updated_at": "2026-08-26T20:29:17.809150246+08:00"
+  "ap_updated_at": "2026-08-26T21:06:24.546740229+08:00",
+  "profile_text": "Re:ステージ！を愛でています",
+  "title_id": 1,
+  "favorite_card_id": 0,
+  "publish_card_id": 0,
+  "acce_slots": {
+    "1": [
+      999
+    ]
+  },
+  "deck_names": [
+    "KiRaRe編成",
+    "",
+    "",
+    "",
+    ""
+  ]
 }

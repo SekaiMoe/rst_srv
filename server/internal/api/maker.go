@@ -26,15 +26,15 @@ import (
 //	maker/finishgame 结算 (记录到谱面作者统计)
 
 type MakerChart struct {
-	ID        int            `json:"id"`
-	Author    string         `json:"author"`     // 玩家 uuid
-	AuthorNo  int            `json:"-"`          // 序号 (避免 uuid 泄露)
-	MusicID   int            `json:"music_id"`
-	Title     string         `json:"title"`
-	Difficulty int           `json:"difficulty"`
-	Notes     json.RawMessage `json:"notes"`     // 谱面数据 (客户端格式原样保存)
-	Plays     int            `json:"plays"`
-	CreatedAt string         `json:"created_at"`
+	ID         int             `json:"id"`
+	Author     string          `json:"author"` // 玩家 uuid
+	AuthorNo   int             `json:"-"`      // 序号 (避免 uuid 泄露)
+	MusicID    int             `json:"music_id"`
+	Title      string          `json:"title"`
+	Difficulty int             `json:"difficulty"`
+	Notes      json.RawMessage `json:"notes"` // 谱面数据 (客户端格式原样保存)
+	Plays      int             `json:"plays"`
+	CreatedAt  string          `json:"created_at"`
 }
 
 type MakerStore struct {

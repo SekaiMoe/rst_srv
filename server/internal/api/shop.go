@@ -30,12 +30,12 @@ func (s *Server) shopItemlist(c *gin.Context) {
 		itemsOf[rowInt(r, "shop_item_pack_id")] = append(itemsOf[rowInt(r, "shop_item_pack_id")], r)
 	}
 	type pack struct {
-		ID         int           `json:"id"`
-		Name       string        `json:"name"`
-		Price      int           `json:"price"`
-		IsPaid     int           `json:"is_paid"`
-		LimitCount int           `json:"limit_count"`
-		Contents   []gin.H       `json:"contents"`
+		ID         int     `json:"id"`
+		Name       string  `json:"name"`
+		Price      int     `json:"price"`
+		IsPaid     int     `json:"is_paid"`
+		LimitCount int     `json:"limit_count"`
+		Contents   []gin.H `json:"contents"`
 	}
 	sort.Slice(packs, func(i, j int) bool { return rowInt(packs[i], "order") < rowInt(packs[j], "order") })
 	out := []pack{}
@@ -106,8 +106,8 @@ func (s *Server) shopBuy(c *gin.Context) {
 		"shop_item_pack_id": packID, "granted": granted, "coin": pl.Coin, "jewel": pl.Jewel})
 }
 
-func (s *Server) shopBuyMusic(c *gin.Context)  { s.shopBuy(c) }
-func (s *Server) shopBuyMovie(c *gin.Context)  { s.shopBuy(c) }
+func (s *Server) shopBuyMusic(c *gin.Context) { s.shopBuy(c) }
+func (s *Server) shopBuyMovie(c *gin.Context) { s.shopBuy(c) }
 func (s *Server) shopLog(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok", "logs": []string{}})
 }
@@ -152,18 +152,18 @@ func (s *Server) shopExchangeList(c *gin.Context) {
 		itemName[rowInt(r, "id")] = rowStr(r, "name")
 	}
 	type ex struct {
-		ID        int    `json:"id"`
-		Campaign  int    `json:"campaign_id"`
-		Title     string `json:"campaign_title"`
-		ItemKind  int    `json:"item_kind"`
-		ItemID    int    `json:"item_id"`
-		ItemName  string `json:"item_name"`
-		ItemNum   int    `json:"item_num"`
-		CostKind  int    `json:"cost_item_kind"`
-		CostID    int    `json:"cost_item_id"`
-		CostName  string `json:"cost_item_name"`
-		CostNum   int    `json:"cost_item_num"`
-		Limit     int    `json:"limit_count"`
+		ID       int    `json:"id"`
+		Campaign int    `json:"campaign_id"`
+		Title    string `json:"campaign_title"`
+		ItemKind int    `json:"item_kind"`
+		ItemID   int    `json:"item_id"`
+		ItemName string `json:"item_name"`
+		ItemNum  int    `json:"item_num"`
+		CostKind int    `json:"cost_item_kind"`
+		CostID   int    `json:"cost_item_id"`
+		CostName string `json:"cost_item_name"`
+		CostNum  int    `json:"cost_item_num"`
+		Limit    int    `json:"limit_count"`
 	}
 	infos := map[int]map[string]interface{}{}
 	for _, r := range s.Master["campaignExchangeInfo"] {
@@ -246,7 +246,7 @@ func (s *Server) shopExchange(c *gin.Context) {
 	log.Printf("[exchange] uuid=%s ex=%d x%d 消耗item%d x%d", pl.UUID, exID, num, costID, costNum)
 	c.JSON(http.StatusOK, gin.H{"code": 200, "message": "ok",
 		"got_kind": rowInt(item, "item_kind"), "got_id": rowInt(item, "item_id"),
-		"got_num": rowInt(item, "item_num") * num,
+		"got_num":      rowInt(item, "item_num") * num,
 		"cost_item_id": costID, "cost_num": costNum, "items": pl.Items})
 }
 

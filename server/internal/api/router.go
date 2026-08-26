@@ -163,19 +163,43 @@ func RegisterRoutes(r *gin.Engine, dataDir, masterdataPath string) {
 	r.POST("/maker/save_slot_unlock", s.requireAuth, s.makerSaveSlotUnlock)
 
 	// ===== 通用 stub =====
-	stub := []string{
-		"card/acce", "card/batch", "card//acce_skill", "deck/batch",
-		"deck/disband", "deck/rename", "event/battle_start", "event/battle_finish",
-		"event/finishgame", "event/gameover", "event/info", "event/playgame",
-		"event/friendsearch", "background/retry/finishgame",
-		"background/retry/event_finishgame", "item/friendpt", "item/livestage",
-		"profile/setname", "profile/setprofile", "profile/settitle",
-		"profile/titlelist", "profile/favorite_card", "profile/publish_card",
-		"vote/info", "vote/decision", "acce/grow", "acce/lock", "acce/sell",
-	}
-	for _, ep := range stub {
-		r.POST("/"+ep, s.requireAuth, s.ok)
-	}
+	// ===== 档案 (见 profile.go) =====
+	r.POST("/profile/setname", s.requireAuth, s.profileSetName)
+	r.POST("/profile/setprofile", s.requireAuth, s.profileSetProfile)
+	r.POST("/profile/settitle", s.requireAuth, s.profileSetTitle)
+	r.POST("/profile/titlelist", s.requireAuth, s.profileTitlelist)
+	r.POST("/profile/favorite_card", s.requireAuth, s.profileFavoriteCard)
+	r.POST("/profile/publish_card", s.requireAuth, s.profilePublishCard)
+
+	// ===== 饰品/批量编成 (见 acce.go) =====
+	r.POST("/card/acce", s.requireAuth, s.cardAcce)
+	r.POST("/card//acce_skill", s.requireAuth, s.cardAcceSkill)
+	r.POST("/card/batch", s.requireAuth, s.cardBatch)
+	r.POST("/deck/batch", s.requireAuth, s.deckBatch)
+	r.POST("/deck/disband", s.requireAuth, s.deckDisband)
+	r.POST("/deck/rename", s.requireAuth, s.deckRename)
+	r.POST("/acce/grow", s.requireAuth, s.acceGrow)
+	r.POST("/acce/lock", s.requireAuth, s.acceLock)
+	r.POST("/acce/sell", s.requireAuth, s.acceSell)
+
+	// ===== 投票 (见 event.go) =====
+	r.POST("/vote/info", s.requireAuth, s.voteInfoHandler)
+	r.POST("/vote/decision", s.requireAuth, s.voteDecision)
+
+	// ===== 活动/对战 (见 event.go) =====
+	r.POST("/event/info", s.requireAuth, s.eventInfoHandler)
+	r.POST("/event/playgame", s.requireAuth, s.eventPlaygame)
+	r.POST("/event/finishgame", s.requireAuth, s.eventFinishgame)
+	r.POST("/event/gameover", s.requireAuth, s.eventGameover)
+	r.POST("/event/friendsearch", s.requireAuth, s.eventFriendsearch)
+	r.POST("/event/battle_start", s.requireAuth, s.eventBattleStart)
+	r.POST("/event/battle_finish", s.requireAuth, s.eventBattleFinish)
+	r.POST("/background/retry/finishgame", s.requireAuth, s.backgroundRetryFinishgame)
+	r.POST("/background/retry/event_finishgame", s.requireAuth, s.backgroundRetryEventFinishgame)
+
+	// ===== 杂项 =====
+	r.POST("/item/friendpt", s.requireAuth, s.itemFriendpt)
+	r.POST("/item/livestage", s.requireAuth, s.itemLivestage)
 }
 
 // ---- 认证中间件: HTTP 头 UUID + 表单 token ----
