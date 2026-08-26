@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "author": "final-test-001",
+  "music_id": 1,
+  "title": "My First Chart",
+  "difficulty": 3,
+  "notes": {
+    "bpm": 140,
+    "notes": [
+      {
+        "t": 1000,
+        "x": 1
+      },
+      {
+        "t": 2000,
+        "x": 2
+      }
+    ]
+  },
+  "plays": 0,
+  "created_at": "2026-08-26 12:37:53"
+}
