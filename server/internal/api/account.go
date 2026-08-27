@@ -36,7 +36,7 @@ func (s *Server) login1st(c *gin.Context) {
 	body := gin.H{
 		"code": 200, "message": "ok",
 		"token": tok, "dayToken": tok,
-		"is_new": isNew,
+		"is_new": false, // 纪念服: 永远不算新玩家 (强制教程开关)
 		"id": 1, "uuid": uuid, "name": "プリズムステップ",
 		"lv": 1, "exp": 0,
 		"stamina": 100, "stamina_max": 100,
@@ -231,7 +231,7 @@ func (s *Server) accountCreate(c *gin.Context) {
 	body["message"] = "ok"
 	body["token"] = tok
 	body["dayToken"] = tok
-	body["is_new"] = true
+	body["is_new"] = false // 同上
 	body["playerCards"] = []gin.H{}
 	body["units"] = []gin.H{}
 	body["cardEquipments"] = []gin.H{}

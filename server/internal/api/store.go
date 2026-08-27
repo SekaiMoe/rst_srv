@@ -169,6 +169,7 @@ func (p *PlayerStore) Create(uuid string) (*Player, error) {
 		UUID:      uuid,
 		Name:      "プリズムステップ",
 		CreatedAt: time.Now(),
+		Level:     1,
 		Ap:        100, ApMax: 100,
 		Jewel: 100000, Coin: 1000000, FriendPoint: 10000,
 		Decks:       make([][]int, 5),
